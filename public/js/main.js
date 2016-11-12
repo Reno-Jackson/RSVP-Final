@@ -2,12 +2,25 @@
 // Angular JS work fpr App///////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 
-angular.module('RSVP', [])
-    .controller('YelpCtrl', yelpController);
+angular.module('RSVP', ['ngRoute'])
+    .controller('YelpCtrl', yelpController)
+    .config(myRouter);
 
 yelpController.$inject = ['$http'];
+myRouter.$inject = ['$routeProvider'];
 
-function yelpController($http) {
+function myRouter($routeProvider) {
+
+    $routeProvider
+        .when('/', {
+            templateUrl: '/html/templates/app.html'
+        })
+        .otherwise({
+            redirectTo: '/'
+        })
+}
+
+function yelpController($http, $routeProvider) {
     var yelp = this;
     yelp.categories = ['nightlife', 'food', 'arts'];
 

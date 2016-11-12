@@ -3,7 +3,21 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
     mongoose = require('mongoose'),
-    Routes = require('./routes.js');
+    fileserver = express.static('public'), // turn the public folder into a file server
+    Routes = require('./routes.js'),
+    colors = require('colors'),
+    sessions = require('client-sessions')({ // session cookie
+        cookieName: 'RSVP', // cookie name (within document.cookies on the Frontend)
+        secret: 'My$uP3R@W3$0M3$3CR3+', // encryption secret
+        requestKey: 'session', // stores the session cookie in req.session
+        duration: (86400 * 1000) * 7, // one week in milliseconds
+        cookie: {
+            ephemeral: false, // when true, cookie expires when the browser closes
+            httpOnly: true, // when true, cookie is not accessible from javascript
+            secure: false // when true, cookie will only be sent over SSL;
+        }
+    });
+
 
 mongoose.connect('mongodb://localhost/rsvp', (err) => {
     if (err) {
@@ -19,7 +33,9 @@ var PORT = process.env.PORT || 3030;
 var app = express();
 
 // Middleware goes here//
-app.use(express.static('public'));
+app.use(fileserver);
+
+app.use(sessions);
 
 app.use(morgan('dev'));
 
