@@ -22,7 +22,7 @@ function myRouter($routeProvider) {
 
 function yelpController($http, $routeProvider) {
     var yelp = this;
-    yelp.categories = ['nightlife', 'food', 'arts'];
+    yelp.categories = ['food', 'nightlife', 'fun', 'arts', 'sights'];
 
     console.log("TEST");
 

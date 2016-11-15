@@ -1,76 +1,195 @@
-/*Event Area*/
+/*==============================================================================
+Event Icons
+==============================================================================*/
 
-.bis-header {
-    background-color: black;
-    text-color: white;
+ul.event-option {
+    list-style: none;
+    display: inline;
+    margin-left: 0 !important;
+    padding: 0;
+}
+
+ul.event-option li {
+    display: inline;
+    margin: 0 5px;
+}
+
+
+/* event icons */
+
+.event-option a.icoFood:hover {
+    background-color: #00FF83;
+}
+
+.event-option a.icoNightlife:hover {
+    background-color: #B600E8;
+}
+
+.event-option a.icoFun:hover {
+    background-color: #FF4E00;
+}
+
+.event-option a.icoArts:hover {
+    background-color: #E8CE0C;
+}
+
+.event-option a.icoSights:hover {
+    background-color: #0086FF;
+}
+
+.event-option a.icoSights:hover i, .event-option a.icoFood:hover i, .event-option a.icoFun:hover i, .event-option a.icoNightlife:hover i, .event-option a.icoArts:hover i {
+    color: #FFF;
+}
+
+a.socialIcon:hover, .socialHoverClass {
+    color: #44BCDD;
+}
+
+.event-circle li a {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto 0 auto;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    list-style: none;
+}
+
+.event-circle li i {
+    margin: 0;
+    line-height: 50px;
     text-align: center;
 }
 
-bis-footer {}
+.event-circle li a:hover i, .triggeredHover {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms--transform: rotate(360deg);
+    transform: rotate(360deg);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+}
 
-.form-event.ul {
-    width: 500px;
-    height: 500px;
-    text-decoration: none;
+.event-circle i {
+    color: #fff;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+.eventPin {
+    background-color: #D3D3D3;
 }
 
 
-/*////////////////////Design for scroll to top button/////////////////////*/
+/*==============================================================================
+Event Area
+==============================================================================*/
 
-#return-to-top {
-    background: #7a694f;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 35px;
-    bottom: 20px;
-    display: block;
-    display: none;
-    height: 50px;
-    position: fixed;
-    right: 20px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: 50px;
-    -o-transition: all 0.3s ease;
-    -moz-border-radius: 35px;
-    -ms-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -webkit-border-radius: 35px;
-    -webkit-transition: all 0.3s linear;
+section.results {
+    margin: 5px;
 }
 
-#return-to-top i {
-    color: #7a694f;
-    font-size: 19px;
-    left: 16px;
-    margin: 0;
+section.results:hover {
+    border-color: 1px dodgerblue;
+}
+
+.results {
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+    margin: auto;
+}
+
+.results bis-img {
+    height: 100px;
+    width: 100px;
+}
+
+.results li {
+    list-style: none;
+}
+
+results results-footer {
+    background-color: #24242a;
+}
+
+.results header {
+    color: white;
+    text-align: center;
+    background-color: #24242a;
+}
+
+.results ul {
+    border: 2px solid #24242A;
+    height: 460px;
+    width: 400px;
+    float: left;
+    margin: 5px;
+}
+
+
+/*--============================================================================
+test carousel
+===========================================================================  */
+
+.results-slideshow {
+    margin: 0 auto;
     position: relative;
-    top: 13px;
-    transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
 }
 
-#return-to-top:hover {
-    background: rgba(0, 0, 0, 0.9);
+.results-slideshow>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translate3d(0, 0, 0);
 }
 
-#return-to-top:hover i {
-    color: #ed9407;
-    top: 5px;
+.results-slideshow .mover-1 {
+    animation: moveSlideshow 12s linear infinite;
 }
 
 
-/*////////////////////////End of Scroll to Top Area//////////////////////*/
+/*.results-slideshow .mover-2 {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    background-position: 0 -200px;
+    animation: moveSlideshow 15s linear infinite;
+}*/
 
 
-/*=========================
-  Icons
- ================= */
+/*
+.results-slideshow:hover .mover-2 {
+    opacity: 1;
+}*/
+
+@keyframes moveSlideshow {
+    100% {
+        transform: translateX(-66.6666%);
+    }
+}
 
 
-/* footer social icons */
+/*==============================================================================
+End of test
+==============================================================================*/
+
+
+/*==============================================================================
+ Footer Social Icons
+ ============================================================================ */
 
 ul.social-network {
     list-style: none;
@@ -155,6 +274,13 @@ a.socialIcon:hover, .socialHoverClass {
     transition: all 0.8s;
 }
 
+.socialPin {
+    background-color: #D3D3D3;
+}
+
+.8s;
+
+}
 .socialPin {
     background-color: #D3D3D3;
 }
