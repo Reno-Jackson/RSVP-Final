@@ -7,6 +7,7 @@ angular.module('RSVP', ['ngRoute'])
     .config(myRouter);
 
 yelpController.$inject = ['$http'];
+
 myRouter.$inject = ['$routeProvider'];
 
 function myRouter($routeProvider) {
@@ -18,11 +19,27 @@ function myRouter($routeProvider) {
         .otherwise({
             redirectTo: '/'
         })
+        .when('/app', {
+            templateUrl: '/html/index.html'
+        })
+        .otherwise({
+            redirectTo: '/'
+        })
+        .when('/', {
+            templateUrl: ''
+        })
+        .otherwise({
+            redirectTo: ''
+        })
 }
 
 function yelpController($http, $routeProvider) {
     var yelp = this;
-    yelp.categories = ['food', 'nightlife', 'fun', 'arts', 'sights'];
+
+    yelp.events = [];
+
+    window.yelp = yelp;
+    yelp.categories = ['restaurants', 'nightlife', 'amusementparks', 'arts', 'hiking'];
 
     console.log("TEST");
 
@@ -60,9 +77,34 @@ function yelpController($http, $routeProvider) {
         }, function errorCallback(response) {
             console.log("Error: ", response);
         });
-        //////////////// This is the Search Bar Functionality///////////////////////////
+    }
+    yelp.changeCat = function(category) {
+        console.log("Setting category to ", category);
+        yelp.category = category;
+    }
 
-        /////////////// This is the End of the Search Bar Functionality/////////////////
+    yelp.addEvent = function(name, address) {
+        var eventExists = false;
+        var event = {
+            name: name,
+            address: address
+        };
+        for (var i = 0; i < yelp.events.length; i++) {
+            if (yelp.events[i].name === name) {
+                eventExists = true;
+            }
+        }
+        if (yelp.events.length < 5 && !eventExists) {
+            yelp.events.push(event)
+        }
+
+    }
+    yelp.removeEvent = function(name) {
+        for (var i = 0; i < yelp.events.length; i++) {
+            if (yelp.events[i].name === name) {
+                yelp.events.splice(i, 1);
+            }
+        }
     }
 
 
