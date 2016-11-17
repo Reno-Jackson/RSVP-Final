@@ -1,5 +1,5 @@
 var Auth = require('./controllers/auth');
-
+var twilio = require('./controllers/twilio');
 
 module.exports = (app) => {
 
@@ -14,6 +14,8 @@ module.exports = (app) => {
             root: './public/html/'
         })
     })
+
+    app.post('/twilio', twilio.message)
 
     // Login Routes/////////////////////////////////////////////////////////////////
 

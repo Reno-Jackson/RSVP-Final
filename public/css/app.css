@@ -1,4 +1,13 @@
 /*==============================================================================
+General Style
+==============================================================================*/
+
+.body {
+    background-color: #24242a;
+}
+
+
+/*==============================================================================
 Event Icons
 ==============================================================================*/
 
@@ -17,27 +26,47 @@ ul.event-option li {
 
 /* event icons */
 
-.event-option a.icoFood:hover {
+.event-option a.icoRestaurants:hover {
     background-color: #0086FF;
+}
+
+.restaurantSelected {
+    background-color: #0086FF!important;
 }
 
 .event-option a.icoNightlife:hover {
     background-color: #B600E8;
 }
 
-.event-option a.icoFun:hover {
+.nightlifeSelected {
+    background-color: #B600E8!important;
+}
+
+.event-option a.icoEntertainment:hover {
     background-color: #FF4E00;
+}
+
+.funSelected {
+    background-color: #FF4E00!important;
 }
 
 .event-option a.icoArts:hover {
     background-color: #E8CE0C;
 }
 
-.event-option a.icoSights:hover {
+.artsSelected {
+    background-color: #E8CE0C!important;
+}
+
+.event-option a.icoOutdoors:hover {
     background-color: #00FF83;
 }
 
-.event-option a.icoSights:hover i, .event-option a.icoFood:hover i, .event-option a.icoFun:hover i, .event-option a.icoNightlife:hover i, .event-option a.icoArts:hover i {
+.sightsSelected {
+    background-color: #00FF83!important;
+}
+
+.event-option a.icoOutdoors:hover i, .event-option a.icoRestaurants:hover i, .event-option a.icoEntertainment:hover i, .event-option a.icoNightlife:hover i, .event-option a.icoArts:hover i {
     color: #FFF;
 }
 
@@ -53,15 +82,15 @@ a.socialIcon:hover, .socialHoverClass {
     -webkit-border-radius: 50%;
     border-radius: 50%;
     text-align: center;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     font-size: 20px;
     list-style: none;
 }
 
 .event-circle li i {
     margin: 0;
-    line-height: 50px;
+    line-height: 100px;
     text-align: center;
 }
 
@@ -92,11 +121,8 @@ a.socialIcon:hover, .socialHoverClass {
 
 .eventButton {
     background-color: Transparent;
-    background-repeat: no-repeat;
     border: none;
-    cursor: pointer;
     outline: none;
-    overflow: hidden;
 }
 
 
@@ -104,54 +130,80 @@ a.socialIcon:hover, .socialHoverClass {
 Event Area
 ==============================================================================*/
 
-section.results {
-    margin: 5px;
-}
-
-section.results:hover {
-    border-color: 1px dodgerblue;
-}
-
 .results {
-    text-decoration: none;
-    box-sizing: border-box;
-    list-style: none;
-    margin: auto;
+    overflow-x: scroll;
+    display: inline-flex;
 }
 
-.results bis-img {
+.results .bisImg {
     height: 100px;
     width: 100px;
+    margin-right: 10px;
+}
+
+.results .bisRating {
+    margin-bottom: 5px;
 }
 
 .results li {
     list-style: none;
 }
 
-results results-footer {
-    background-color: #24242a;
-}
-
 .results header {
     color: white;
     text-align: center;
-    background-color: #24242a;
+    text-decoration: none;
+    /*background-color: #0086FF;*/
+    font-weight: bold;
+    -webkit-text-stroke: 1px rgba(192, 182, 95, 0.93);
+}
+
+.results .bisInfo {
+    height: 115px;
+}
+
+.results .userInfo {
+    height: 115px;
+    margin-top: 5px;
 }
 
 .results ul {
-    border: 2px solid #24242A;
-    height: 460px;
-    width: 400px;
-    float: left;
+    border: 3px solid rgba(192, 182, 95, 0.93);
+    width: 460px;
     margin: 5px;
+    color: white;
+    background-color: #24242A;
 }
+
+.results .addEvent {
+    height: 115px;
+}
+
+
+/*==============================================================================
+Beginning of Events Selected Styling
+==============================================================================*/
+
+
+/*
+section .removeButton {
+    height: 24px;
+    line-height: 12px;
+    position: relative;
+}*/
+
+
+/*==============================================================================
+End of Events Selected Styling
+==============================================================================*/
 
 
 /*--============================================================================
 test carousel
 ===========================================================================  */
 
-.results-slideshow {
+
+/*.results-slideshow {
     margin: 0 auto;
     position: relative;
     overflow: hidden;
@@ -168,7 +220,7 @@ test carousel
 
 .results-slideshow .mover-1 {
     animation: moveSlideshow 12s linear infinite;
-}
+}*/
 
 
 /*.results-slideshow .mover-2 {
@@ -176,19 +228,19 @@ test carousel
     transition: opacity 0.5s ease-out;
     background-position: 0 -200px;
     animation: moveSlideshow 15s linear infinite;
-}*/
+}
 
 
-/*
+
 .results-slideshow:hover .mover-2 {
     opacity: 1;
-}*/
+}
 
 @keyframes moveSlideshow {
     100% {
         transform: translateX(-66.6666%);
     }
-}
+}*/
 
 
 /*==============================================================================
@@ -283,13 +335,6 @@ a.socialIcon:hover, .socialHoverClass {
     transition: all 0.8s;
 }
 
-.socialPin {
-    background-color: #D3D3D3;
-}
-
-.8s;
-
-}
 .socialPin {
     background-color: #D3D3D3;
 }
