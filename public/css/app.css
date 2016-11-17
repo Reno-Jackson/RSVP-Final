@@ -131,14 +131,25 @@ Event Area
 ==============================================================================*/
 
 .results {
-    overflow-x: scroll;
     display: inline-flex;
+    overflow-x: scroll;
+}
+
+.results h3 {
+    margin-top: 0px;
+}
+
+.results i {
+    margin-right: 5px;
+    float: left;
+    color: crimson;
 }
 
 .results .bisImg {
     height: 100px;
     width: 100px;
     margin-right: 10px;
+    border: 2px solid aliceblue;
 }
 
 .results .bisRating {
@@ -173,16 +184,23 @@ Event Area
     margin: 5px;
     color: white;
     background-color: #24242A;
+    /*display: table;
+    table-layout: fixed;*/
 }
 
-.results .addEvent {
-    height: 115px;
+.results .addEvent button {
+    border: 1px solid aliceblue;
 }
 
 
 /*==============================================================================
 Beginning of Events Selected Styling
 ==============================================================================*/
+
+.mapsToPhone a {
+    text-decoration: none;
+    color: white;
+}
 
 
 /*
@@ -202,15 +220,17 @@ End of Events Selected Styling
 test carousel
 ===========================================================================  */
 
-
-/*.results-slideshow {
-    margin: 0 auto;
+.slideShow {
     position: relative;
-    overflow: hidden;
     transform: translate3d(0, 0, 0);
 }
 
-.results-slideshow>div {
+
+/*.slideShow:hover {
+    animation-play-state: paused!important;
+}*/
+
+.slideShow>div {
     position: absolute;
     top: 0;
     left: 0;
@@ -218,12 +238,15 @@ test carousel
     transform: translate3d(0, 0, 0);
 }
 
-.results-slideshow .mover-1 {
-    animation: moveSlideshow 12s linear infinite;
-}*/
+.slideShow .mover-1 {
+    /*animation: moveSlideshow 25s linear infinite;*/
+    /*-webkit-animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation: circular;*/
+}
 
 
-/*.results-slideshow .mover-2 {
+/*.slideShow .mover-2 {
     opacity: 0;
     transition: opacity 0.5s ease-out;
     background-position: 0 -200px;
@@ -232,15 +255,15 @@ test carousel
 
 
 
-.results-slideshow:hover .mover-2 {
+.slideShow:hover .mover-2 {
     opacity: 1;
-}
+}*/
 
 @keyframes moveSlideshow {
     100% {
-        transform: translateX(-66.6666%);
+        transform: translateX(-999.9999%);
     }
-}*/
+}
 
 
 /*==============================================================================

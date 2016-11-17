@@ -62,6 +62,9 @@
         <!---===================================================================
         Event Options
         ====================================================================--->
+        <div>
+            <h1 style='color: black'>Choose your event Type</h1>
+        </div>
         <div class="event-container container">
             <div class="col-md-10 col-md-offset-2">
                 <ul class="event-option event-circle">
@@ -127,8 +130,8 @@
         <!--====================================================================
 Results go here
 =============================================================================-->
-        <div class="results well">
-            <ul class='well' ng-repeat='business in yelp.data.businesses'>
+        <div class="results slideShow well">
+            <ul class='well mover-1' ng-repeat='business in yelp.data.businesses'>
                 <header>
                     <h3><a ng-href="{{business.url}}" target='_blank'>{{business.name.substring(0,28)}}</a></h3>
                 </header>
@@ -137,11 +140,11 @@ Results go here
                         <img class='bisImg' align=left ng-src="{{business.image_url}}" />
                     </li>
                     <li><img class='bisRating' ng-src="{{business.rating_img_url_large}}" /></li>
-                    <i class='fa fa-map-marker' style="float:left"></i>
+                    <i class='fa fa-map-marker fa-2x'></i>
                     <li ng-repeat='line in business.location.display_address'>
-                        {{line}}
+                        {{line.substring(0,35)}}
                     </li>
-                    <li><i class='fa fa-phone'></i><a href="#"> {{business.display_phone}}</a></li>
+                    <li><i class='fa fa-phone fa-2x'></i><a href="#"> {{business.display_phone}}</a></li>
                 </div>
 
                 <div class='userInfo'>
@@ -149,7 +152,7 @@ Results go here
                         <img class='bisImg' ng-src="{{business.snippet_image_url}}" align=left /> <b>Recent Reviews:</b> {{business.snippet_text.substring(0,200)}}
                     </li>
                 </div>
-                <div class 'addEvent'style=''>
+                <div class='addEvent'>
                     <button type="button" class='btn btn-success btn-lg btn-block active' ng-click='yelp.addEvent(business.name, business.location.display_address)'>ADD</button>
                 </div>
             </ul>
@@ -161,12 +164,18 @@ Results go here
         <section class='form well' style='width: 50%; height:400px; float:left'>
             <ul ng-repeat='event in yelp.events'>
                 <li class='form-control' style='list-style:none ; height:50px ; line-height: 2.428571'>
-                    <i class='fa fa-map-marker'></i> {{event.name}}-{{event.address}}
+                    <i class='fa fa-map-marker'></i> {{event.name}} - {{event.address}}
                     <button type="button" style="float:right; height:100% ; line-height:50% ; position:relative" class='btn btn-danger btn-sm active' ng-click='yelp.removeEvent(event.name)'>Remove</button>
                 </li>
             </ul>
-            <button type="button" class='btn btn-success btn-lg btn-block active'><i class='fa fa-map'></i> Send Maps to Phone</button>
+            <button type="button" class='btn btn-success btn-lg btn-block active' class="mapsToPhone">
+                <a href="/twilio.html">
+                    <i class='fa fa-map'></i>
+                     Send Maps to Phone
+                </a>
+            </button>
         </section>
+
         <!--====================================================================
         Map goes here
     =======================================================================  -->
