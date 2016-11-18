@@ -116,6 +116,36 @@ function yelpController($http, $routeProvider) {
             }
         }
     }
+    yelp.SaveData = function() {
+        var newItinerary = {
+            events: yelp.events,
+            date: new Date()
+        }
+        $http.post('/api/RSVP/Itinerary', newItinerary)
+            .then(function(success) {
+                console.log(success)
+            }, function(err) {
+                console.log(err)
+            })
+    }
+    yelp.getProfile = function() {
+        $http.get('/api/me')
+            .then(function(success) {
+                console.log(success)
+                yelp.profile = success.data;
+            }, function(err) {
+                console.log(err)
+            })
+    }
+    yelp.getPastEvents = function() {
+        $http.get('/api/RSVP/Itinerary')
+            .then(function(success) {
+                console.log(success)
+                yelp.pastEvents = success.data;
+            }, function(err) {
+                console.log(err)
+            })
+    }
 
 
     ////////////////////////////////////////////////////////////////////////////

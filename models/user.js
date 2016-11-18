@@ -11,7 +11,10 @@ var mongoose = require('mongoose'),
             unique: true
         },
         password: String,
-        created: Number // Date.now()
+        created: {
+            type: Number,
+            default: () => Date.now()
+        }
     });
 
 // hash passwords before saving them

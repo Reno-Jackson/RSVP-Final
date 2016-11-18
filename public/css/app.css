@@ -2,8 +2,18 @@
 General Style
 ==============================================================================*/
 
-.body {
-    background-color: #24242a;
+body li {
+    list-style: none;
+}
+
+
+/*==============================================================================
+Navbar Style Area
+==============================================================================*/
+
+.nav-item .dropdown .profileTab .open a:focus ul li {
+    background-color: #24242A !important;
+    color: white !important;
 }
 
 
@@ -125,6 +135,11 @@ a.socialIcon:hover, .socialHoverClass {
     outline: none;
 }
 
+.eventButton span {
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
 
 /*==============================================================================
 Event Area
@@ -197,7 +212,12 @@ Event Area
 Beginning of Events Selected Styling
 ==============================================================================*/
 
-.mapsToPhone a {
+.mapsToPhone a:link {
+    text-decoration: none;
+    color: white;
+}
+
+.mapsToPhone a:hover {
     text-decoration: none;
     color: white;
 }

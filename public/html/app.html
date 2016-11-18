@@ -37,7 +37,6 @@
     <section class="main-header">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
-
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
@@ -54,7 +53,14 @@
                             <li><a href="#services">Services</a></li>
                             <li><a href="#portfolio">Events</a></li>
                             <li><a href="#team">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li class="nav-item dropdown profileTab">
+                                <a href="#" class="nav-link dropdown-toggle" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE <i class="fa fa-caret-down" aria-hidden="true" style='color:white'></i></a>
+                                <ul class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+                                    <li class="dropdown-item"><a href="/html/profile.html">VIEW PROFILE</a></li>
+                                    <li class="dropdown-item"><a href="/html/profile.html">SETTINGS</a></li>
+                                    <li class="dropdown-item"><a href="/html/profile.html">LOG-OUT</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -63,8 +69,9 @@
         Event Options
         ====================================================================--->
         <div>
-            <h1 style='color: black'>Choose your event Type</h1>
+            <h2>CHOOSE YOUR EVENTS</h2>
         </div>
+        <br>
         <div class="event-container container">
             <div class="col-md-10 col-md-offset-2">
                 <ul class="event-option event-circle">
@@ -73,7 +80,7 @@
                                 <a href=# ng-class='{"restaurantSelected icoRestaurants eventPin":yelp.activeButton["restaurants"], "icoRestaurants eventPin":!yelp.activeButton["restaurants"]}'>
                                     <i class="fa fa-cutlery fa-3x"></i>
                                 </a>
-                                <br>Restaurants
+                                <br><span>RESTAURANTS</span>
                             </button>
                     </li>
                     <li>
@@ -81,7 +88,7 @@
                                 <a href=# ng-class='{"nightlifeSelected icoNightlife eventPin":yelp.activeButton["nightlife"], "icoNightlife eventPin":!yelp.activeButton["nightlife"]}'>
                                     <i class="fa fa-glass fa-3x"></i>
                                 </a>
-                                <br>Nightlife
+                                <br><span>NIGHTLIFE</span>
                             </button>
 
                     </li>
@@ -90,7 +97,7 @@
                                 <a href=# ng-class='{"funSelected icoEntertainment eventPin":yelp.activeButton["amusementparks"], "icoEntertainment eventPin":!yelp.activeButton["amusementparks"]}'>
                                     <i class='fa fa-ticket fa-3x'></i>
                                 </a>
-                                <br>Entertainment
+                                <br><span>ENTERTAINMENT</span>
                             </button>
 
                     </li>
@@ -99,7 +106,7 @@
                                 <a href=# ng-class='{"artsSelected icoArts eventPin":yelp.activeButton["arts"], "icoArts eventPin":!yelp.activeButton["arts"]}'>
                                     <i class='fa fa-music fa-3x'></i>
                                 </a>
-                                    <br>Arts & Music
+                                    <br><span>ARTS & MUSIC</span>
                             </button>
 
                     </li>
@@ -108,12 +115,13 @@
                                 <a href=# ng-class='{"sightsSelected icoOutdoors eventPin":yelp.activeButton["hiking"], "icoOutdoors eventPin":!yelp.activeButton["hiking"]}'>
                                     <i class='fa fa-tree fa-3x'></i>
                                 </a>
-                                <br>Outdoors
+                                <br><span>OUTDOORS</span>
                             </button>
                     </li>
                 </ul>
             </div>
         </div>
+        <br>
         <!--====================================================================
         Seach option goes here
     =====================================================================-->
@@ -168,11 +176,11 @@ Results go here
                     <button type="button" style="float:right; height:100% ; line-height:50% ; position:relative" class='btn btn-danger btn-sm active' ng-click='yelp.removeEvent(event.name)'>Remove</button>
                 </li>
             </ul>
-            <button type="button" class='btn btn-success btn-lg btn-block active' class="mapsToPhone">
-                <a href="/twilio.html">
+            <button type="button" class='btn btn-success btn-lg btn-block active' class="mapsToPhone" ng-click='yelp.SaveData()'>
+                <!-- <a href="/twilio.html"> -->
                     <i class='fa fa-map'></i>
                      Send Maps to Phone
-                </a>
+                <!-- </a> -->
             </button>
         </section>
 

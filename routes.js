@@ -1,5 +1,6 @@
 var Auth = require('./controllers/auth');
 var twilio = require('./controllers/twilio');
+var profile = require('./controllers/profile')
 
 module.exports = (app) => {
 
@@ -14,8 +15,12 @@ module.exports = (app) => {
             root: './public/html/'
         })
     })
+    app.get('/api/me', profile.getMe)
+    app.get('/api/RSVP/Itinerary', profile.getItinerary)
 
     app.post('/twilio', twilio.message)
+    app.post('/api/RSVP/Itinerary', profile.saveItinerary)
+
 
     // Login Routes/////////////////////////////////////////////////////////////////
 
