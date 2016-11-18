@@ -29,6 +29,10 @@
 </head>
 
 <body ng-controller="YelpCtrl as yelp" ng-init='yelp.getProfile(); yelp.getPastEvents()'>
+    <!-- Return to Top -->
+    <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
+    <!--Controls for the top of the page button  -->
+    <a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up"></i></a>
     <!-- Header
     ============================================= -->
     <section class="main-header">
@@ -41,16 +45,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img class='nav-logo' src="/img/logo/logo-bird.png" class="img-responsive" alt="logo"></a>
+                    <a class="navbar-brand" href="/"><img class='nav-logo' src="/img/logo/logo-bird.png" class="img-responsive" alt="logo"></a>
                 </div>
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
                     <div class="col-md-8 col-xs-12 nav-wrap">
                         <ul class="nav navbar-nav">
-                            <li><a href="/">Home</a></li>
+                            <!-- <li><a href="/">Home</a></li> -->
                             <li><a href="/app">CREATE EVENT</a></li>
                             <li><a href="#contact" class="page-scroll">CONTACT</a></li>
-                            <li><a href="#profile">PROFILE</a></li>
-                            <li><a href="#team">LOGOUT</a></li>
+                            <li><a href="/html/profile.html">PROFILE</a></li>
+                            <li><a href="">LOGOUT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -67,24 +71,35 @@
             <h3>Your current email address is: <span>{{yelp.profile.email}}</span></h3>
             <h3>Your Account was created on <span>{{yelp.profile.created|date}}</span></h3>
             <p>
-                Here is where you can find out more about you profile. Feel free to Contact us with questions below.
+                Here is where you can find out more about your profile. Feel free to Contact us with questions below.
             </p>
             <h3>View Your Past Events</h3>
-            <ul ng-repeat="event in yelp.pastEvents">
-                <!-- <img ng-src="{{event in business.image_url}}" align=left></img> -->
-                <li><b>{{event.name}}</b>
+            <ul ng-repeat="itinerary in yelp.pastEvents">
+
+
+
+                <li><b>Itinerary for {{itinerary.date | date}}</b>
                     <ul>
-                        <li ng-repeat="line in event.address">{{line}}</li>
+                        <!-- style="margin:20px" -->
+                        <li ng-repeat=" event in itinerary.events ">
+                            <img ng-src="{{event.img}} " align=left></img> {{event.name}}
+                            <ul>
+                                <li ng-repeat="line in event.address ">{{line}}</li>
+                                <!-- style='display: inline-flex' -->
+                            </ul>
+                            <hr>
+                            <br>
+                        </li>
                     </ul>
                 </li>
             </ul>
         </section>
         <!-- Contact Us
     	============================================= -->
+
         <section id="contact">
-            <br>
-            <br>
             <div class="container">
+                <br><br>
                 <h2>Contact Us</h2>
                 <hr class="sep">
                 <p>Get In Touch</p>
@@ -104,20 +119,22 @@
                 </div>
             </div>
         </section>
+
+        <br><br>
         <!--====================================================================
      Footer
     ======================================================================== -->
         <footer>
-            <img class='footer-logo' src="/img/welcome/alone-bird.png" />
-            <img class='welcome-logo' src="/img/welcome/rsvp.png" />
-            <div class="social container">
-                <div class="col-lg-12">
-                    <ul class="social-network social-circle">
-                        <li><a href="//facebook.com" class="icoFacebook socialPin"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="//youtube.com" class="icoYouTube socialPin"><i class="fa fa-youtube-play"></i></a></li>
-                        <li><a href="//twitter.com" class="icoTwitter socialPin"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="//linkedin.com" class="icoLinkedin socialPin"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="//pinterest.com" class="icoPinterest socialPin"><i class="fa fa-pinterest-p"></i></a></li>
+            <img class='footer-logo' src="/img/welcome/alone-bird.png " />
+            <img class='welcome-logo' src="/img/welcome/rsvp.png " />
+            <div class="social container ">
+                <div class="col-lg-12 ">
+                    <ul class="social-network social-circle ">
+                        <li><a href="//facebook.com " class="icoFacebook socialPin "><i class="fa fa-facebook "></i></a></li>
+                        <li><a href="//youtube.com " class="icoYouTube socialPin "><i class="fa fa-youtube-play "></i></a></li>
+                        <li><a href="//twitter.com " class="icoTwitter socialPin "><i class="fa fa-twitter "></i></a></li>
+                        <li><a href="//linkedin.com " class="icoLinkedin socialPin "><i class="fa fa-linkedin "></i></a></li>
+                        <li><a href="//pinterest.com " class="icoPinterest socialPin "><i class="fa fa-pinterest-p "></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -125,18 +142,18 @@
             <h6>A Project by LymeLite Productions Inc.</h6>
         </footer>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="/bootstrap-assets/js/bootstrap.min.js"></script>
-        <script src="/js/custom.js"></script>
+        <script src="/bootstrap-assets/js/bootstrap.min.js "></script>
+        <script src="/js/custom.js "></script>
         <!-- JS PLUGINS -->
-        <script src="/plugins/owl-carousel/owl.carousel.min.js"></script>
-        <script src="/js/jquery.easing.min.js"></script>
-        <script src="/plugins/waypoints/jquery.waypoints.min.js"></script>
-        <script src="/plugins/countTo/jquery.countTo.js"></script>
-        <script src="/plugins/inview/jquery.inview.min.js"></script>
-        <script src="/plugins/Lightbox/dist/js/lightbox.min.js"></script>
-        <script src="/plugins/WOW/dist/wow.min.js"></script>
+        <script src="/plugins/owl-carousel/owl.carousel.min.js "></script>
+        <script src="/js/jquery.easing.min.js "></script>
+        <script src="/plugins/waypoints/jquery.waypoints.min.js "></script>
+        <script src="/plugins/countTo/jquery.countTo.js "></script>
+        <script src="/plugins/inview/jquery.inview.min.js "></script>
+        <script src="/plugins/Lightbox/dist/js/lightbox.min.js "></script>
+        <script src="/plugins/WOW/dist/wow.min.js "></script>
 </body>
 
 </html>

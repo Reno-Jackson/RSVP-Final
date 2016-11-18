@@ -30,7 +30,7 @@ function getMe(req, res) {
 }
 
 function getItinerary(req, res) {
-    yelp.findOne({
+    yelp.find({
         userId: req.session.uid
     }, (err, itineraries) => {
         if (err) {
@@ -38,7 +38,7 @@ function getItinerary(req, res) {
             res.send(err)
         } else {
             console.log('Sucess, View Itineraries from database', itineraries);
-            res.send(itineraries.events)
+            res.send(itineraries)
         }
     })
 }

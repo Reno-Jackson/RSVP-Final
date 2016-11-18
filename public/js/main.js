@@ -1,8 +1,111 @@
+///////////////////////////////////////////////////////////////////////////
+// Small Calendar Widget Code /////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+// angular.module('ui.bootstrap.demo').controller('DatepickerPopupDemoCtrl', function(yelp) {
+//     yelp.today = function() {
+//         yelp.dt = new Date();
+//     };
+//     yelp.today();
+//
+//     yelp.clear = function() {
+//         yelp.dt = null;
+//     };
+//
+//     yelp.inlineOptions = {
+//         customClass: getDayClass,
+//         minDate: new Date(),
+//         showWeeks: true
+//     };
+//
+//     yelp.dateOptions = {
+//         dateDisabled: disabled,
+//         formatYear: 'yy',
+//         maxDate: new Date(2020, 5, 22),
+//         minDate: new Date(),
+//         startingDay: 1
+//     };
+//
+//     // Disable weekend selection
+//     function disabled(data) {
+//         var date = data.date,
+//             mode = data.mode;
+//         return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+//     }
+//
+//     yelp.toggleMin = function() {
+//         yelp.inlineOptions.minDate = yelp.inlineOptions.minDate ? null : new Date();
+//         yelp.dateOptions.minDate = yelp.inlineOptions.minDate;
+//     };
+//
+//     yelp.toggleMin();
+//
+//     yelp.open1 = function() {
+//         yelp.popup1.opened = true;
+//     };
+//
+//     yelp.open2 = function() {
+//         yelp.popup2.opened = true;
+//     };
+//
+//     yelp.setDate = function(year, month, day) {
+//         yelp.dt = new Date(year, month, day);
+//     };
+//
+//     yelp.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+//     yelp.format = yelp.formats[0];
+//     yelp.altInputFormats = ['M!/d!/yyyy'];
+//
+//     yelp.popup1 = {
+//         opened: false
+//     };
+//
+//     yelp.popup2 = {
+//         opened: false
+//     };
+//
+//     var tomorrow = new Date();
+//     tomorrow.setDate(tomorrow.getDate() + 1);
+//     var afterTomorrow = new Date();
+//     afterTomorrow.setDate(tomorrow.getDate() + 1);
+//     yelp.events = [{
+//         date: tomorrow,
+//         status: 'full'
+//     }, {
+//         date: afterTomorrow,
+//         status: 'partially'
+//     }];
+//
+//     function getDayClass(data) {
+//         var date = data.date,
+//             mode = data.mode;
+//         if (mode === 'day') {
+//             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+//
+//             for (var i = 0; i < yelp.events.length; i++) {
+//                 var currentDay = new Date(yelp.events[i].date).setHours(0, 0, 0, 0);
+//
+//                 if (dayToCheck === currentDay) {
+//                     return yelp.events[i].status;
+//                 }
+//             }
+//         }
+//
+//         return '';
+//     }
+// });
+
+/////////////////////////////////////////////////////////////////////////
+//End of Calendar Widget Fuctionality////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+
+
 /////////////////////////////////////////////////////////////////////////
 // Angular JS work fpr App///////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 
-angular.module('RSVP', ['ngRoute'])
+angular.module('RSVP', ['ngRoute', 'ui.bootstrap'])
     .controller('YelpCtrl', yelpController)
     .config(myRouter);
 
@@ -29,6 +132,113 @@ function myRouter($routeProvider) {
 
 function yelpController($http, $routeProvider) {
     var yelp = this;
+
+
+
+
+
+
+
+
+
+    yelp.today = function() {
+        yelp.dt = new Date();
+    };
+    yelp.today();
+
+    yelp.clear = function() {
+        yelp.dt = null;
+    };
+
+    yelp.inlineOptions = {
+        customClass: getDayClass,
+        minDate: new Date(),
+        showWeeks: true
+    };
+
+    yelp.dateOptions = {
+        dateDisabled: disabled,
+        formatYear: 'yy',
+        maxDate: new Date(2020, 5, 22),
+        minDate: new Date(),
+        startingDay: 1
+    };
+
+    // Disable weekend selection
+    function disabled(data) {
+        var date = data.date,
+            mode = data.mode;
+        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
+
+    yelp.toggleMin = function() {
+        yelp.inlineOptions.minDate = yelp.inlineOptions.minDate ? null : new Date();
+        yelp.dateOptions.minDate = yelp.inlineOptions.minDate;
+    };
+
+    yelp.toggleMin();
+
+    yelp.open1 = function() {
+        yelp.popup1.opened = true;
+    };
+
+    yelp.open2 = function() {
+        yelp.popup2.opened = true;
+    };
+
+    yelp.setDate = function(year, month, day) {
+        yelp.dt = new Date(year, month, day);
+    };
+
+    yelp.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    yelp.format = yelp.formats[0];
+    yelp.altInputFormats = ['M!/d!/yyyy'];
+
+    yelp.popup1 = {
+        opened: false
+    };
+
+    yelp.popup2 = {
+        opened: false
+    };
+
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    yelp.events = [{
+        date: tomorrow,
+        status: 'full'
+    }, {
+        date: afterTomorrow,
+        status: 'partially'
+    }];
+
+    function getDayClass(data) {
+        var date = data.date,
+            mode = data.mode;
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+            for (var i = 0; i < yelp.events.length; i++) {
+                var currentDay = new Date(yelp.events[i].date).setHours(0, 0, 0, 0);
+
+                if (dayToCheck === currentDay) {
+                    return yelp.events[i].status;
+                }
+            }
+        }
+
+        return '';
+    }
+
+
+
+
+
+
+
+
 
     yelp.events = [];
     window.yelp = yelp;
@@ -93,11 +303,13 @@ function yelpController($http, $routeProvider) {
 
     }
 
-    yelp.addEvent = function(name, address) {
+    yelp.addEvent = function(name, address, img_url) {
+        // console.log("image", img_url)
         var eventExists = false;
         var event = {
             name: name,
-            address: address
+            address: address,
+            img: img_url
         };
         for (var i = 0; i < yelp.events.length; i++) {
             if (yelp.events[i].name === name) {
@@ -140,7 +352,7 @@ function yelpController($http, $routeProvider) {
     yelp.getPastEvents = function() {
         $http.get('/api/RSVP/Itinerary')
             .then(function(success) {
-                console.log(success)
+                console.log("Response: ", success)
                 yelp.pastEvents = success.data;
             }, function(err) {
                 console.log(err)
@@ -149,7 +361,7 @@ function yelpController($http, $routeProvider) {
 
 
     ////////////////////////////////////////////////////////////////////////////
-    //End of Angular JS work for App////////////////////////////////////////////
+    //End of Angular JS work for YelpApp////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
 
 

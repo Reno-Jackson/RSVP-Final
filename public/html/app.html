@@ -13,6 +13,9 @@
     <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js'></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js'></script>
     <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.js'></script>
+
     <script src="/js/oauth-signature.js"></script>
     <script src="/js/main.js"></script>
 
@@ -65,15 +68,64 @@
                     </div>
                 </div>
         </nav>
+        <!--====================================================================
+        Event Calendar Widget Options
+    =========================================================================-->
+        <style>
+            .full button span {
+                background-color: limegreen;
+                border-radius: 32px;
+                color: black;
+            }
+
+            .partially button span {
+                background-color: orange;
+                border-radius: 32px;
+                color: black;
+            }
+        </style>
+        <div>
+            <!-- ng-controller="DatepickerPopupDemoCtrl" -->
+            <h2>Choose the Day for your Event</h2>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <pre>Selected date is: <em>{{yelp.dt | date:'fullDate' }}</em></pre>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="yelp.dt" is-open="yelp.popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="yelp.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <button type="button" class="btn btn-sm btn-info active" ng-click="yelp.today()">Today</button>
+                    <!-- <button type="button" class="btn btn-sm btn-default" ng-click="yelp.setDate(2009, 7, 24)">2009-08-24</button> -->
+                    <button type="button" class="btn btn-sm btn-danger active" ng-click="yelp.clear()">Clear</button>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <!--====================================================================
+        End of Event Calendar Widget Options
+    =========================================================================-->
+
         <!---===================================================================
         Event Options
-        ====================================================================--->
+    ========================================================================--->
         <div>
-            <h2>CHOOSE YOUR EVENTS</h2>
+            <h2 style='color:white; background-color: #24242A'>CHOOSE YOUR EVENTS</h2>
         </div>
         <br>
-        <div class="event-container container">
-            <div class="col-md-10 col-md-offset-2">
+        <div class="event-container row">
+            <div class="col-md-6 col-md-offset-3">
                 <ul class="event-option event-circle">
                     <li>
                         <button type="button" class="eventButton" ng-click='yelp.changeCategory("restaurants"); yelp.activeButton["restaurants"]=!yelp.activeButton["restaurants"]'>
@@ -138,8 +190,8 @@
         <!--====================================================================
 Results go here
 =============================================================================-->
-        <div class="results slideShow well">
-            <ul class='well mover-1' ng-repeat='business in yelp.data.businesses'>
+        <div class="well results DocumentList">
+            <ul class='well DocumentItem' ng-repeat='business in yelp.data.businesses'>
                 <header>
                     <h3><a ng-href="{{business.url}}" target='_blank'>{{business.name.substring(0,28)}}</a></h3>
                 </header>
@@ -152,7 +204,7 @@ Results go here
                     <li ng-repeat='line in business.location.display_address'>
                         {{line.substring(0,35)}}
                     </li>
-                    <li><i class='fa fa-phone fa-2x'></i><a href="#"> {{business.display_phone}}</a></li>
+                    <li class='phoneInfo'><a href="#"><i class='fa fa-phone fa-2x'></i> {{business.display_phone}}</a></li>
                 </div>
 
                 <div class='userInfo'>
@@ -161,7 +213,7 @@ Results go here
                     </li>
                 </div>
                 <div class='addEvent'>
-                    <button type="button" class='btn btn-success btn-lg btn-block active' ng-click='yelp.addEvent(business.name, business.location.display_address)'>ADD</button>
+                    <button type="button" class='btn btn-success btn-lg btn-block active' ng-click='yelp.addEvent(business.name, business.location.display_address, business.image_url)'>ADD</button>
                 </div>
             </ul>
         </div>
@@ -169,27 +221,36 @@ Results go here
         <!--====================================================================
         Results selected for Search go here
     ======================================================================== -->
-        <section class='form well' style='width: 50%; height:400px; float:left'>
-            <ul ng-repeat='event in yelp.events'>
-                <li class='form-control' style='list-style:none ; height:50px ; line-height: 2.428571'>
-                    <i class='fa fa-map-marker'></i> {{event.name}} - {{event.address}}
-                    <button type="button" style="float:right; height:100% ; line-height:50% ; position:relative" class='btn btn-danger btn-sm active' ng-click='yelp.removeEvent(event.name)'>Remove</button>
-                </li>
-            </ul>
-            <button type="button" class='btn btn-success btn-lg btn-block active' class="mapsToPhone" ng-click='yelp.SaveData()'>
-                <!-- <a href="/twilio.html"> -->
-                    <i class='fa fa-map'></i>
-                     Send Maps to Phone
-                <!-- </a> -->
-            </button>
-        </section>
+        <div class="row">
+            <div class="col-md-6">
+                <section class='form well'>
+                    <!-- style='width: 50%; height:400px; float:left' -->
+                    <ul ng-repeat='event in yelp.events'>
+                        <li class='form-control' style='list-style:none ; height:50px ; line-height: 2.428571'>
+                            <i class='fa fa-map-marker'></i> {{event.name.substring(0,20)}} - {{event.address}}
+                            <button type="button" style="float:right; height:100% ; line-height:50% ; position:relative" class='btn btn-danger btn-sm active' ng-click='yelp.removeEvent(event.name)'>Remove</button>
+                        </li>
+                    </ul>
+                    <button type="button" class='btn btn-success btn-lg btn-block active' class="mapsToPhone" ng-click='yelp.SaveData()'>
+                        <!-- <a href="/twilio.html"> -->
+                            <i class='fa fa-map'></i>
+                            Send Maps to Phone
+                            <!-- </a> -->
+                    </button>
+            </div>
+        </div>
 
         <!--====================================================================
         Map goes here
     =======================================================================  -->
         <!-- <h3>Map Your RSVP</h3> -->
-        <section id="map" style='width: 50%; height:400px, float:right'>
-        </section>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                <section id="map">
+                    <!-- style='width: 50%; height:400px, float:right' -->
+                </section>
+            </div>
+        </div>
         <!--====================================================================
      Footer
 	======================================================================== -->
@@ -217,7 +278,7 @@ Results go here
                     lng: -105.270546
                 };
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 4,
+                    zoom: 8,
                     center: uluru
                 });
                 var marker = new google.maps.Marker({

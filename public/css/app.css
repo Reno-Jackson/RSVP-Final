@@ -1,5 +1,10 @@
 /*==============================================================================
-General Style
+Beginning of Style for General App Page
+
+
+ ()()
+ ( ..)
+c('')('')
 ==============================================================================*/
 
 body li {
@@ -8,7 +13,12 @@ body li {
 
 
 /*==============================================================================
-Navbar Style Area
+End of Style for General App Page
+==============================================================================*/
+
+
+/*==============================================================================
+Beginning of Style for Navbar Area
 ==============================================================================*/
 
 .nav-item .dropdown .profileTab .open a:focus ul li {
@@ -18,7 +28,12 @@ Navbar Style Area
 
 
 /*==============================================================================
-Event Icons
+End of Style for Navbar Area
+==============================================================================*/
+
+
+/*==============================================================================
+Beginning of Style for Event Icons
 ==============================================================================*/
 
 ul.event-option {
@@ -32,9 +47,6 @@ ul.event-option li {
     display: inline;
     margin: 0 5px;
 }
-
-
-/* event icons */
 
 .event-option a.icoRestaurants:hover {
     background-color: #0086FF;
@@ -142,12 +154,21 @@ a.socialIcon:hover, .socialHoverClass {
 
 
 /*==============================================================================
-Event Area
+Beginning of Style for Event Icons
+==============================================================================*/
+
+
+/*==============================================================================
+Beginning of Style for Event Area
 ==============================================================================*/
 
 .results {
     display: inline-flex;
-    overflow-x: scroll;
+    /*overflow-x: hidden;*/
+}
+
+.results .phoneInfo {
+    position: inherit;
 }
 
 .results h3 {
@@ -173,13 +194,13 @@ Event Area
 
 .results li {
     list-style: none;
+    margin-top: -4px;
 }
 
 .results header {
     color: white;
     text-align: center;
     text-decoration: none;
-    /*background-color: #0086FF;*/
     font-weight: bold;
     -webkit-text-stroke: 1px rgba(192, 182, 95, 0.93);
 }
@@ -190,7 +211,7 @@ Event Area
 
 .results .userInfo {
     height: 115px;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
 .results ul {
@@ -199,8 +220,6 @@ Event Area
     margin: 5px;
     color: white;
     background-color: #24242A;
-    /*display: table;
-    table-layout: fixed;*/
 }
 
 .results .addEvent button {
@@ -209,10 +228,16 @@ Event Area
 
 
 /*==============================================================================
-Beginning of Events Selected Styling
+End of Style for Event Area
 ==============================================================================*/
 
-.mapsToPhone a:link {
+
+/*==============================================================================
+Beginning of Style for Events Selected
+==============================================================================*/
+
+
+/*.mapsToPhone a:link {
     text-decoration: none;
     color: white;
 }
@@ -220,36 +245,45 @@ Beginning of Events Selected Styling
 .mapsToPhone a:hover {
     text-decoration: none;
     color: white;
-}
-
-
-/*
-section .removeButton {
-    height: 24px;
-    line-height: 12px;
-    position: relative;
 }*/
 
 
 /*==============================================================================
-End of Events Selected Styling
+End of Style for Events Selected
 ==============================================================================*/
 
 
 /*--============================================================================
-test carousel
+Beginning of Style for Scroll Area
 ===========================================================================  */
 
+
+/*.DocumentList {
+    overflow-x: scroll;
+    overflow-y: hidden;*/
+
+
+/*width: 100%;*/
+
+
+/*padding: 0 15px;*/
+
+
+}
+
+/*.DocumentItem {
+    border: 1px solid black;
+    padding: 0;
+    height: 200px;
+}*/
 .slideShow {
     position: relative;
     transform: translate3d(0, 0, 0);
 }
 
-
 /*.slideShow:hover {
     animation-play-state: paused!important;
 }*/
-
 .slideShow>div {
     position: absolute;
     top: 0;
@@ -257,14 +291,12 @@ test carousel
     height: 100%;
     transform: translate3d(0, 0, 0);
 }
-
 .slideShow .mover-1 {
-    /*animation: moveSlideshow 25s linear infinite;*/
+    animation: moveSlideshow 25s linear infinite;
     /*-webkit-animation-iteration-count: infinite;
     animation-play-state: running;
     animation: circular;*/
 }
-
 
 /*.slideShow .mover-2 {
     opacity: 0;
@@ -278,66 +310,52 @@ test carousel
 .slideShow:hover .mover-2 {
     opacity: 1;
 }*/
-
 @keyframes moveSlideshow {
     100% {
         transform: translateX(-999.9999%);
     }
 }
 
-
 /*==============================================================================
-End of test
+End of Scroll  Area Styling
 ==============================================================================*/
-
 
 /*==============================================================================
  Footer Social Icons
  ============================================================================ */
-
 ul.social-network {
     list-style: none;
     display: inline;
     margin-left: 0 !important;
     padding: 0;
 }
-
 ul.social-network li {
     display: inline;
     margin: 0 5px;
 }
 
-
 /* footer social icons */
-
 .social-network a.icoFacebook:hover {
     background-color: #3B5998;
 }
-
 .social-network a.icoYouTube:hover {
     background-color: #BB0000;
 }
-
 .social-network a.icoTwitter:hover {
     background-color: #33CCFF;
 }
-
 .social-network a.icoLinkedin:hover {
     background-color: #007BB7;
 }
-
 .social-network a.icoPinterest:hover {
     background-color: #CB2027;
 }
-
 .social-network a.icoPinterest:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i, .social-network a.icoYouTube:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
     color: #FFF;
 }
-
 a.socialIcon:hover, .socialHoverClass {
     color: #44BCDD;
 }
-
 .social-circle li a {
     display: inline-block;
     position: relative;
@@ -350,13 +368,11 @@ a.socialIcon:hover, .socialHoverClass {
     height: 50px;
     font-size: 20px;
 }
-
 .social-circle li i {
     margin: 0;
     line-height: 50px;
     text-align: center;
 }
-
 .social-circle li a:hover i, .triggeredHover {
     -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -368,7 +384,6 @@ a.socialIcon:hover, .socialHoverClass {
     -ms-transition: all 0.2s;
     transition: all 0.2s;
 }
-
 .social-circle i {
     color: #fff;
     -webkit-transition: all 0.8s;
@@ -377,7 +392,6 @@ a.socialIcon:hover, .socialHoverClass {
     -ms-transition: all 0.8s;
     transition: all 0.8s;
 }
-
 .socialPin {
     background-color: #D3D3D3;
 }
