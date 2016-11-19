@@ -132,14 +132,16 @@ function myRouter($routeProvider) {
 
 function yelpController($http, $routeProvider) {
     var yelp = this;
+    yelp.foo = 'foo'
+    window.yelp = yelp;
 
 
 
 
 
-
-
-
+    yelp.doStuff = function() {
+        console.log('doin stuff')
+    }
 
     yelp.today = function() {
         yelp.dt = new Date();
@@ -253,7 +255,6 @@ function yelpController($http, $routeProvider) {
 
     yelp.categories = ['restaurants', 'nightlife', 'amusementparks', 'arts', 'hiking'];
 
-    console.log("TEST");
 
     yelp.testApi = function() {
 
@@ -309,7 +310,7 @@ function yelpController($http, $routeProvider) {
         var event = {
             name: name,
             address: address,
-            img: img_url
+            img: img_url,
         };
         for (var i = 0; i < yelp.events.length; i++) {
             if (yelp.events[i].name === name) {
@@ -329,9 +330,10 @@ function yelpController($http, $routeProvider) {
         }
     }
     yelp.SaveData = function() {
+        window.location.href = '/html/text.html'
         var newItinerary = {
             events: yelp.events,
-            date: new Date()
+            date: yelp.dt
         }
         $http.post('/api/RSVP/Itinerary', newItinerary)
             .then(function(success) {
@@ -354,6 +356,21 @@ function yelpController($http, $routeProvider) {
             .then(function(success) {
                 console.log("Response: ", success)
                 yelp.pastEvents = success.data;
+            }, function(err) {
+                console.log(err)
+            })
+    }
+
+    yelp.sendMessage = function() {
+        console.log("Attempting to send message!");
+
+        $http.post('http://textbelt.com/text', {
+
+                number: yelp.getNumber,
+                message: "To " + yelp.getName + ":" + yelp.getMessage
+            })
+            .then(function(success) {
+                console.log("Response: ", success)
             }, function(err) {
                 console.log(err)
             })

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html>
-
-<!DOCTYPE html>
-<html lang="en" ng-app="RSVP">
+<html ng-app="RSVP">
 
 <head>
     <meta charset='utf-8'>
     <!--========================================================================
-    Profile Page
+    This is the Textbelt Messaging Page
   ===========================================================================-->
     <title>RSVP</title>
     <!--JS script tags go here  -->
@@ -20,9 +17,7 @@
     <script src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.js'></script>
     <script src="/js/oauth-signature.js"></script>
     <script src="/js/main.js"></script>
-    <script src="/js/custom.js"></script>
-
-    </script>
+    <!-- <script src="/js/custom.js"></script> -->
 
     <!--CSS link tags go here, my own CSS is always at bottom  -->
 
@@ -33,7 +28,8 @@
     <link rel="shortcut icon" href="/img/favicon/favicon-bird-32x32.png">
 </head>
 
-<body ng-controller="YelpCtrl as yelp" ng-init='yelp.getProfile(); yelp.getPastEvents()'>
+
+<body ng-controller="YelpCtrl as yelp">
     <!-- Return to Top -->
     <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
     <!--Controls for the top of the page button  -->
@@ -55,9 +51,9 @@
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
                     <div class="col-md-8 col-xs-12 nav-wrap">
                         <ul class="nav navbar-nav">
-                            <!-- <li><a href="/">Home</a></li> -->
+                            <li><a href="/">Home</a></li>
                             <li><a href="/app">CREATE EVENT</a></li>
-                            <li><a href="#contact" class="page-scroll">CONTACT</a></li>
+                            <li><a href="#contact" class="page-scroll">TEXT</a></li>
                             <li><a href="/html/profile.html">PROFILE</a></li>
                             <li><a href="">LOGOUT</a></li>
                         </ul>
@@ -66,69 +62,42 @@
         </nav>
         <br>
         <br>
-        <br>
-        <!--====================================================================
-        Profile Header
-    =========================================================================-->
-        <section>
-            <br>
-            <h2>Welcome to your Profile Page <span>{{yelp.profile.name}}</span></h2>
-            <h3>Your current email address is: <span>{{yelp.profile.email}}</span></h3>
-            <h3>Your Account was created on <span>{{yelp.profile.created|date}}</span></h3>
-            <p>
-                Here is where you can find out more about your profile. Feel free to Contact us with questions below.
-            </p>
-            <h3>View Your Past Events</h3>
-            <ul ng-repeat="itinerary in yelp.pastEvents">
-
-
-
-                <li><b>Itinerary for {{itinerary.date | date}}</b>
-                    <ul>
-                        <!-- style="margin:20px" -->
-                        <li ng-repeat=" event in itinerary.events ">
-                            <img ng-src="{{event.img}} " align=left></img> {{event.name}}
-                            <ul>
-                                <li ng-repeat="line in event.address ">{{line}}</li>
-                                <!-- style='display: inline-flex' -->
-                            </ul>
-                            <hr>
-                            <br>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+        <section id="welcome">
+            <div class="container">
+                <h2>Thanks for using <span><img class='welcome-logo' src="/img/welcome/rsvp.png"/></span></h2>
+                <hr class="sep">
+                <img class="img-responsive center-block wow fadeInUp welcome-logo" data-wow-delay=".3s" src="/img/welcome/alone-bird.png" alt="logo">
+            </div>
         </section>
-        <!-- Contact Us
-    	============================================= -->
 
         <section id="contact">
             <div class="container">
                 <br><br>
-                <h2>Contact Us</h2>
+                <h2>Message Your Friends</h2>
                 <hr class="sep">
                 <p>Get In Touch</p>
                 <div class="col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay=".2s">
-                    <form>
+                    <form ng-submit='yelp.sendMessage()'>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="Name" placeholder="Name" maxlength="20">
+                            <input ng-model='yelp.getName' type="text" class="form-control" id="Name" placeholder="Name(s)" maxlength="20">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="Email" placeholder="Email" maxlength="50">
+                            <input ng-model='yelp.getNumber' type="text" class="form-control" id="Email" placeholder="Phone Number(s)" maxlength="50">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Message" maxlength="200"></textarea>
+                            <textarea ng-model='yelp.getMessage' class="form-control" rows="3" placeholder="Text Your Friends" maxlength="160"></textarea>
                         </div>
-                        <a href="#" class="btn-block">Send</a>
+                        {{yelp.getMessage.length}}/160 characters
+                        <button type='sumbit' class="btn-block">Send</button>
                     </form>
+
                 </div>
             </div>
         </section>
 
-        <br><br>
         <!--====================================================================
-     Footer
-    ======================================================================== -->
+ Footer
+======================================================================== -->
         <footer>
             <img class='footer-logo' src="/img/welcome/alone-bird.png " />
             <img class='welcome-logo' src="/img/welcome/rsvp.png " />
@@ -150,15 +119,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="/bootstrap-assets/js/bootstrap.min.js "></script>
-        <script src="/js/custom.js "></script>
+        <!-- <script src="/js/custom.js "></script> -->
         <!-- JS PLUGINS -->
         <script src="/plugins/owl-carousel/owl.carousel.min.js "></script>
         <script src="/js/jquery.easing.min.js "></script>
-        <script src="/plugins/waypoints/jquery.waypoints.min.js "></script>
+        <!-- <script src="/plugins/waypoints/jquery.waypoints.min.js "></script> -->
         <script src="/plugins/countTo/jquery.countTo.js "></script>
         <script src="/plugins/inview/jquery.inview.min.js "></script>
         <script src="/plugins/Lightbox/dist/js/lightbox.min.js "></script>
         <script src="/plugins/WOW/dist/wow.min.js "></script>
+
 </body>
 
 </html>
