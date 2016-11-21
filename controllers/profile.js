@@ -47,4 +47,5 @@ module.exports = {
     saveItinerary: saveItinerary,
     getItinerary: getItinerary,
     getMe: getMe
+        // getName: getName
 }

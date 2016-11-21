@@ -2,35 +2,39 @@
 <html ng-app="module.auth">
 
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/auth.css">
-
+    <title>RSVP-Login</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="/js/module.auth.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="shortcut icon" href="/img/favicon/favicon-bird-32x32.png">
 </head>
 
-<body ng-controller="module.auth.controller as auth" class="container">
+<body ng-controller="module.auth.controller as auth">
     <p class="text-center">
-        <a class="btn btn-default" href="/">Homepage</a>
+        <a href="/"><img style="width:20%" src="/img/welcome/alone-bird.png" /></a>
     </p>
-    <section id="tabs">
+    <section id="tabs" class="well" style="height:500px">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
-                <a href="#login" aria-controls="home" role="tab" data-toggle="tab">Login</a>
+                <a href="#login" aria-controls="home" role="tab" data-toggle="tab">LOGIN</a>
             </li>
             <li role="presentation">
-                <a href="#register" aria-controls="profile" role="tab" data-toggle="tab">Register</a>
+                <a href="#register" aria-controls="profile" role="tab" data-toggle="tab">REGISTER</a>
             </li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
             <div id="login" role="tabpanel" class="tab-pane active">
                 <form ng-submit="auth.login.submit($event)">
-                    <h1 class="text-center">Login!</h1>
+                    <h2 class="text-center">LOGIN</h2>
+                    <hr class='light-sep'>
                     <fieldset class="form-group">
                         <label class="sr-only" for="email">Email</label>
                         <div class="input-group">
@@ -51,18 +55,26 @@
             </div>
             <div id="register" role="tabpanel" class="tab-pane">
                 <form ng-submit="auth.register.submit($event)">
-                    <h1 class="text-center">Register!</h1>
+                    <h2 class="text-center">REGISTER</h2>
+                    <hr class='light-sep'>
+                    <fieldset class="form-group">
+                        <label class="sr-only" for="name">Name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class='fa fa-user'></i></div>
+                            <input required placeholder="Name" class="form-control" type="text" ng-model="auth.payload.name" />
+                        </div>
+                    </fieldset>
                     <fieldset class="form-group">
                         <label class="sr-only" for="email">Email</label>
                         <div class="input-group">
-                            <div class="input-group-addon">@</div>
+                            <div class="input-group-addon"><i class="fa fa-at"></i></div>
                             <input required placeholder="Email" class="form-control" type="text" ng-model="auth.payload.email" />
                         </div>
                     </fieldset>
                     <fieldset class="form-group">
                         <label class="sr-only" for="password">Password</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                            <div class="input-group-addon"><span><i class="fa fa-lock"></i></span></div>
                             <input required placeholder="Create a password" class="form-control" type="password" ng-model="auth.payload.password" />
                         </div>
                     </fieldset>
@@ -72,6 +84,27 @@
             </div>
         </div>
     </section>
+
+    <!--====================================================================
+        Footer
+===========================================================================  -->
+    <footer>
+        <img class='footer-logo' src="/img/welcome/alone-bird.png" />
+        <img class='welcome-logo' src="/img/welcome/rsvp.png" />
+        <div class="social container">
+            <div class="col-lg-12">
+                <ul class="social-network social-circle">
+                    <li><a href="//facebook.com" class="icoFacebook socialPin"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="//youtube.com" class="icoYouTube socialPin"><i class="fa fa-youtube-play"></i></a></li>
+                    <li><a href="//twitter.com" class="icoTwitter socialPin"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="//linkedin.com" class="icoLinkedin socialPin"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="//pinterest.com" class="icoPinterest socialPin"><i class="fa fa-pinterest-p"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <h6>RSVP &copy; 2016</h6>
+        <h6>A Project by LymeLite Productions Inc.</h6>
+    </footer>
 </body>
 
 </html>

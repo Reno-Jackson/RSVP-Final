@@ -1,106 +1,3 @@
-///////////////////////////////////////////////////////////////////////////
-// Small Calendar Widget Code /////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-
-// angular.module('ui.bootstrap.demo').controller('DatepickerPopupDemoCtrl', function(yelp) {
-//     yelp.today = function() {
-//         yelp.dt = new Date();
-//     };
-//     yelp.today();
-//
-//     yelp.clear = function() {
-//         yelp.dt = null;
-//     };
-//
-//     yelp.inlineOptions = {
-//         customClass: getDayClass,
-//         minDate: new Date(),
-//         showWeeks: true
-//     };
-//
-//     yelp.dateOptions = {
-//         dateDisabled: disabled,
-//         formatYear: 'yy',
-//         maxDate: new Date(2020, 5, 22),
-//         minDate: new Date(),
-//         startingDay: 1
-//     };
-//
-//     // Disable weekend selection
-//     function disabled(data) {
-//         var date = data.date,
-//             mode = data.mode;
-//         return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-//     }
-//
-//     yelp.toggleMin = function() {
-//         yelp.inlineOptions.minDate = yelp.inlineOptions.minDate ? null : new Date();
-//         yelp.dateOptions.minDate = yelp.inlineOptions.minDate;
-//     };
-//
-//     yelp.toggleMin();
-//
-//     yelp.open1 = function() {
-//         yelp.popup1.opened = true;
-//     };
-//
-//     yelp.open2 = function() {
-//         yelp.popup2.opened = true;
-//     };
-//
-//     yelp.setDate = function(year, month, day) {
-//         yelp.dt = new Date(year, month, day);
-//     };
-//
-//     yelp.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-//     yelp.format = yelp.formats[0];
-//     yelp.altInputFormats = ['M!/d!/yyyy'];
-//
-//     yelp.popup1 = {
-//         opened: false
-//     };
-//
-//     yelp.popup2 = {
-//         opened: false
-//     };
-//
-//     var tomorrow = new Date();
-//     tomorrow.setDate(tomorrow.getDate() + 1);
-//     var afterTomorrow = new Date();
-//     afterTomorrow.setDate(tomorrow.getDate() + 1);
-//     yelp.events = [{
-//         date: tomorrow,
-//         status: 'full'
-//     }, {
-//         date: afterTomorrow,
-//         status: 'partially'
-//     }];
-//
-//     function getDayClass(data) {
-//         var date = data.date,
-//             mode = data.mode;
-//         if (mode === 'day') {
-//             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-//
-//             for (var i = 0; i < yelp.events.length; i++) {
-//                 var currentDay = new Date(yelp.events[i].date).setHours(0, 0, 0, 0);
-//
-//                 if (dayToCheck === currentDay) {
-//                     return yelp.events[i].status;
-//                 }
-//             }
-//         }
-//
-//         return '';
-//     }
-// });
-
-/////////////////////////////////////////////////////////////////////////
-//End of Calendar Widget Fuctionality////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-
-
-
 /////////////////////////////////////////////////////////////////////////
 // Angular JS work fpr App///////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
@@ -132,17 +29,11 @@ function myRouter($routeProvider) {
 
 function yelpController($http, $routeProvider) {
     var yelp = this;
-    yelp.foo = 'foo'
     window.yelp = yelp;
 
-
-
-
-
-    yelp.doStuff = function() {
-        console.log('doin stuff')
-    }
-
+    //////////////////////////////////////////////////////
+    ///////Functions for Calendar widget//////////////////
+    //////////////////////////////////////////////////////
     yelp.today = function() {
         yelp.dt = new Date();
     };
@@ -234,13 +125,36 @@ function yelpController($http, $routeProvider) {
         return '';
     }
 
+    //////////////////////////////////////////////////////
+    //Functions for Owl-Carousel//////////////////////////
+    //////////////////////////////////////////////////////
 
+    // $('.center').carousel({
+    //     centerMode: true,
+    //     centerPadding: '60px',
+    //     slidesToShow: 3,
+    //     responsive: [{
+    //         breakpoint: 768,
+    //         settings: {
+    //             arrows: false,
+    //             centerMode: true,
+    //             centerPadding: '40px',
+    //             slidesToShow: 3
+    //         }
+    //     }, {
+    //         breakpoint: 480,
+    //         settings: {
+    //             arrows: false,
+    //             centerMode: true,
+    //             centerPadding: '40px',
+    //             slidesToShow: 1
+    //         }
+    //     }]
+    // });
 
-
-
-
-
-
+    //////////////////////////////////////////////////////
+    // Yelp Functions/////////////////////////////////////
+    //////////////////////////////////////////////////////
 
     yelp.events = [];
     window.yelp = yelp;
@@ -255,46 +169,44 @@ function yelpController($http, $routeProvider) {
 
     yelp.categories = ['restaurants', 'nightlife', 'amusementparks', 'arts', 'hiking'];
 
+    // yelp.catergories.restautants = ['panasian', 'japanese', 'italian', 'seafood', 'gluten_free', 'vegetarian']
+
 
     yelp.testApi = function() {
 
-            // console.log("test api firing");
+        // console.log("test api firing");
 
-            var callbackID = angular.callbacks.$$counter.toString(36);
-            var method = 'GET';
-            var url = 'http://api.yelp.com/v2/search';
-            var consumerSecret = '8vFRzEqfWIfG_QRo1j0bVWC8ZAU'; //Consumer Secret
-            var tokenSecret = 'TJmo_sm5MKq-8nCFQn1GRz0KgFo'; //Token Secret
-            var params = {
-                callback: 'angular.callbacks._' + callbackID,
-                location: yelp.location,
-                oauth_consumer_key: 'BWZzJtUM_43u0qB0jnHEIQ', //Consumer Key
-                oauth_token: 'IlUVH4PVhpUXWewmanoDr_SJBcmSf_zn', //Token
-                oauth_signature_method: "HMAC-SHA1",
-                oauth_timestamp: new Date().getTime(),
-                oauth_nonce: randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
-                term: yelp.term,
-                category_filter: yelp.category
-            };
-            var signature = oauthSignature.generate(method, url, params, consumerSecret, tokenSecret, {
-                encodeSignature: false
-            });
-            params['oauth_signature'] = signature;
-            console.log(signature);
+        var callbackID = angular.callbacks.$$counter.toString(36);
+        var method = 'GET';
+        var url = 'http://api.yelp.com/v2/search';
+        var consumerSecret = '8vFRzEqfWIfG_QRo1j0bVWC8ZAU'; //Consumer Secret
+        var tokenSecret = 'TJmo_sm5MKq-8nCFQn1GRz0KgFo'; //Token Secret
+        var params = {
+            callback: 'angular.callbacks._' + callbackID,
+            location: yelp.location,
+            oauth_consumer_key: 'BWZzJtUM_43u0qB0jnHEIQ', //Consumer Key
+            oauth_token: 'IlUVH4PVhpUXWewmanoDr_SJBcmSf_zn', //Token
+            oauth_signature_method: "HMAC-SHA1",
+            oauth_timestamp: new Date().getTime(),
+            oauth_nonce: randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
+            term: yelp.term,
+            category_filter: yelp.category
+        };
+        var signature = oauthSignature.generate(method, url, params, consumerSecret, tokenSecret, {
+            encodeSignature: false
+        });
+        params['oauth_signature'] = signature;
+        console.log(signature);
 
-            $http.jsonp(url, {
-                params: params
-            }).then(function successCallback(response) {
-                yelp.data = response.data;
-                console.log("Success: ", response);
-            }, function errorCallback(response) {
-                console.log("Error: ", response);
-            });
-        }
-        // yelp.toggleButton = function() {
-        //     console.log("Why you Click Button?");
-        //     yelp.activeButton = !yelp.activeButton;
-        // }
+        $http.jsonp(url, {
+            params: params
+        }).then(function successCallback(response) {
+            yelp.data = response.data;
+            console.log("Success: ", response);
+        }, function errorCallback(response) {
+            console.log("Error: ", response);
+        });
+    }
 
 
     yelp.changeCategory = function(category) {
@@ -367,7 +279,7 @@ function yelpController($http, $routeProvider) {
         $http.post('http://textbelt.com/text', {
 
                 number: yelp.getNumber,
-                message: "To " + yelp.getName + ":" + yelp.getMessage
+                message: "To: " + yelp.getName + ", " + "From: " + yelp.getUser + ": " + yelp.getMessage
             })
             .then(function(success) {
                 console.log("Response: ", success)

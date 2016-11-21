@@ -2,8 +2,10 @@ body {
     margin-top: 40px;
 }
 
-#tabs h1 {
+#tabs h2 {
     margin: 0;
+    font-weight: bolder;
+    color: white;
 }
 
 #tabs {
@@ -15,4 +17,17 @@ body {
     padding: 40px;
     border: 1px solid #dddddd;
     border-top: none;
+    background-color: #24242A;
+}
+
+.well {
+    background-color: ;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: white;
+    cursor: default;
+    background-color: #24242A;
+    border: 1px solid #FFF;
+    border-bottom-color: transparent;
 }
