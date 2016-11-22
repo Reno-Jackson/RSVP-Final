@@ -69,59 +69,59 @@
                 </div>
             </div>
         </nav>
-        <!--====================================================================
+    </section>
+    <!--====================================================================
         Event Calendar Widget Options
     =========================================================================-->
-        <style>
-            .full button span {
-                background-color: limegreen;
-                border-radius: 32px;
-                color: black;
-            }
+    <style>
+        .full button span {
+            background-color: limegreen;
+            border-radius: 32px;
+            color: black;
+        }
 
-            .partially button span {
-                background-color: orange;
-                border-radius: 32px;
-                color: black;
-            }
-        </style>
-        <section class='scheduleSection'>
-            <h2>SCHEDULE</h2>
-            <hr class='sep'>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <pre>Selected date is: <em>{{yelp.dt | date:'fullDate' }}</em></pre>
-                </div>
+        .partially button span {
+            background-color: orange;
+            border-radius: 32px;
+            color: black;
+        }
+    </style>
+    <section class='scheduleSection'>
+        <h2>SCHEDULE</h2>
+        <hr class='sep'>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <pre>Selected date is: <em>{{yelp.dt | date:'fullDate' }}</em></pre>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <p class="input-group">
-                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="yelp.dt" is-open="yelp.popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                        <span class="input-group-btn">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="yelp.dt" is-open="yelp.popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="yelp.open1()">
                 <i class="fa fa-calendar"></i>
             </button>
           </span>
-                    </p>
-                </div>
-        </section>
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <button type="button" class="btn btn-sm btn-info active" ng-click="yelp.today()">Today</button>
-                <button type="button" class="btn btn-sm btn-danger active" ng-click="yelp.clear()">Clear</button>
+                </p>
             </div>
+    </section>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <button type="button" class="btn btn-sm btn-info active" ng-click="yelp.today()">Today</button>
+            <button type="button" class="btn btn-sm btn-danger active" ng-click="yelp.clear()">Clear</button>
         </div>
-        </div>
-        <hr />
-
-        <!--====================================================================
+    </div>
+    </div>
+    <br>
+    <!--====================================================================
         End of Event Calendar Widget Options
     =========================================================================-->
-        <section>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <!-- <section class="body page-index clearfix">
+    <section style='1px solid firebrick'>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <!-- <section class="body page-index clearfix">
                         <div class="container clearfix">
                             <p class="location"></p>
                             <p class="temperature"></p>
@@ -134,95 +134,94 @@
                                 <div class="windspeed"></div>
                             </div>
                     </section> -->
-                </div>
             </div>
-        </section>
-        <!--====================================================================
+        </div>
+    </section>
+    <!--====================================================================
     Weather App Section
   ===========================================================================-->
 
-        <!--====================================================================
+    <!--====================================================================
     Weather App Section
   ===========================================================================-->
-
-        <!---===================================================================
+    <!---===================================================================
         Event Options
     ========================================================================--->
-        <section class="eventSection">
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-4">
-                    <h2> YOUR EVENTS</h2>
-                    <hr class='light-sep'>
-                </div>
+    <section class="eventSection">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <h2> YOUR EVENTS</h2>
+                <hr class='light-sep'>
             </div>
+        </div>
 
-            <div class="social container">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <ul class="event-option event-circle">
-                        <li>
-                            <button type="button" class="eventButton" ng-click='yelp.changeCategory("restaurants"); yelp.activeButton["restaurants"]=!yelp.activeButton["restaurants"]'>
+        <div class="social container">
+            <div class="col-lg-10 col-lg-offset-1">
+                <ul class="event-option event-circle">
+                    <li>
+                        <button type="button" class="eventButton" ng-click='yelp.changeCategory("restaurants"); yelp.activeButton["restaurants"]=!yelp.activeButton["restaurants"]'>
                                 <a href='' ng-class='{"restaurantSelected icoRestaurants eventPin":yelp.activeButton["restaurants"], "icoRestaurants eventPin":!yelp.activeButton["restaurants"]}'>
                                     <i class="fa fa-cutlery fa-3x"></i>
                                 </a>
                                 <br><h4>RESTAURANTS</h4>
                             </button>
-                        </li>
-                        <li>
-                            <button type='button' class='eventButton' type="button" ng-click='yelp.changeCategory("nightlife"); yelp.activeButton["nightlife"]=!yelp.activeButton["nightlife"]'>
+                    </li>
+                    <li>
+                        <button type='button' class='eventButton' type="button" ng-click='yelp.changeCategory("nightlife"); yelp.activeButton["nightlife"]=!yelp.activeButton["nightlife"]'>
                                 <a href='' ng-class='{"nightlifeSelected icoNightlife eventPin":yelp.activeButton["nightlife"], "icoNightlife eventPin":!yelp.activeButton["nightlife"]}'>
                                     <i class="fa fa-glass fa-3x"></i>
                                 </a>
                                 <br><h4>NIGHTLIFE</h4>
                             </button>
-                        </li>
-                        <li>
-                            <button type='button' class='eventButton' type="button" ng-click='yelp.changeCategory("amusementparks"); yelp.activeButton["amusementparks"]=!yelp.activeButton["amusementparks"]'>
+                    </li>
+                    <li>
+                        <button type='button' class='eventButton' type="button" ng-click='yelp.changeCategory("amusementparks"); yelp.activeButton["amusementparks"]=!yelp.activeButton["amusementparks"]'>
                                 <a href='' ng-class='{"funSelected icoEntertainment eventPin":yelp.activeButton["amusementparks"], "icoEntertainment eventPin":!yelp.activeButton["amusementparks"]}'>
                                     <i class='fa fa-ticket fa-3x'></i>
                                 </a>
                                 <br><h4>ENTERTAINMENT</h4>
                             </button>
-                        </li>
-                        <li>
-                            <button type='button' class='eventButton' type="button" ng-click='yelp.changeCategory("arts"); yelp.activeButton["arts"]=!yelp.activeButton["arts"]'>
+                    </li>
+                    <li>
+                        <button type='button' class='eventButton' type="button" ng-click='yelp.changeCategory("arts"); yelp.activeButton["arts"]=!yelp.activeButton["arts"]'>
                                 <a href='' ng-class='{"artsSelected icoArts eventPin":yelp.activeButton["arts"], "icoArts eventPin":!yelp.activeButton["arts"]}'>
                                     <i class='fa fa-music fa-3x'></i>
                                 </a>
                                 <br><h4>ARTS & MUSIC</h4>
                             </button>
-                        </li>
-
-                        <li>
-                            <button type='button' class='eventButton' type="button" ng-click='yelp.changeCategory("hiking"); yelp.activeButton["hiking"]=!yelp.activeButton["hiking"]'>
+                    </li>
+                    <li>
+                        <button type='button' class='eventButton' type="button" ng-click='yelp.changeCategory("hiking"); yelp.activeButton["hiking"]=!yelp.activeButton["hiking"]'>
                                 <a href='' ng-class='{"sightsSelected icoOutdoors eventPin":yelp.activeButton["hiking"], "icoOutdoors eventPin":!yelp.activeButton["hiking"]}'>
                                     <i class='fa fa-tree fa-3x'></i>
                                 </a>
                                 <br><h4>OUTDOORS</h4>
                             </button>
-                        </li>
-                    </ul>
-                </div>
+                    </li>
+                </ul>
             </div>
-        </section>
-        <br>
-        <!--====================================================================
+        </div>
+    </section>
+    <br>
+    <!--====================================================================
         Seach option goes here
     =====================================================================-->
-        <section>
-            <form class='form well' ng-submit="yelp.testApi()">
-                <!-- <select class='form-control' ng-options='category as category for category in yelp.categories' ng-model='yelp.category'>
+    <section>
+        <form class='form well' ng-submit="yelp.testApi()">
+            <!-- <select class='form-control' ng-options='category as category for category in yelp.categories' ng-model='yelp.category'>
             <option value="" disabled selected>Please Select</option>
         </select> -->
-                <input class='form-control' ng-model="yelp.term" type="text" placeholder="I'm looking for...">
-                <input class='form-control' ng-model="yelp.location" type="text" placeholder="Enter City or Zipcode">
-                <button class='btn btn-success btn-lg btn-block active' type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
-            </form>
-        </section>
-        <!--====================================================================
+            <input class='form-control' ng-model="yelp.term" type="text" placeholder="I'm looking for...">
+            <input class='form-control' ng-model="yelp.location" type="text" placeholder="Enter City or Zipcode">
+            <button class='btn btn-success btn-lg btn-block active' type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+        </form>
+    </section>
+    <!--====================================================================
 Results go here
 =============================================================================-->
-        <div class="results well">
-            <div class="carousel">
+    <div class="row">
+        <section class="results">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 resultsArea">
                 <ul class='well' ng-repeat='business in yelp.data.businesses'>
                     <header>
                         <h3><a ng-href="{{business.url}}" target='_blank'>{{business.name.substring(0,28)}}</a></h3>
@@ -257,95 +256,70 @@ Results go here
                     </div>
                 </ul>
             </div>
-        </div>
-        <br><br>
+        </section>
         <!--====================================================================
         Results selected for Search go here
     ======================================================================== -->
-        <div class="row">
-            <div class="col-sm-6">
-                <section class='form well'>
-                    <ul ng-repeat='event in yelp.events'>
-                        <li class='form-control' style='list-style:none ; height:50px ; line-height: 2.428571'>
-                            <i class='fa fa-map-marker'></i> {{event.name.substring(0,20)}} - {{event.address}}
-                            <button type="button" style="float:right; height:100% ; line-height:50% ; position:relative" class='btn btn-danger btn-sm active' ng-click='yelp.removeEvent(event.name)'>Remove</button>
-                        </li>
-                    </ul>
-                    <button id="submit" type="button" class='btn btn-success btn-lg btn-block active center'>
-                            <i class='fa fa-map'></i>
-                            Show Routes
-                    </button>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <section class='form well'>
+                <ol ng-repeat='event in yelp.events'>
+                    <!-- list-style:none ; -->
+                    <li class='form-control' style=' height:75px ; line-height: 2.428571'>
+                        <i class='fa fa-building'></i> {{event.name}}
+                        <button type="button" style="float:right; height:100% ; line-height:50% ; position:relative" class='btn btn-danger btn-sm active' ng-click='yelp.removeEvent(event.name)'>Remove</button>
+                        <br>
+                        <p><i class='fa fa-map-marker'></i> {{event.address[0]}}</p>
+                        <!-- |cut:true:30:'...' -->
+                    </li>
+                </ol>
+                <section class='itineraryList'>
                     <button type="button" class='btn btn-success btn-lg btn-block active center' class="mapsToPhone" ng-click='yelp.SaveData()'>
-                            <i class='fa fa-map'></i>
-                            Send Message to Friends
+                        <i class='fa fa-envelope'></i>
+                        RSVP your Friends
                     </button>
                 </section>
-            </div>
-
-            <!--================================================================
+            </section>
+        </div>
+    </div>
+    <br>
+    <!--================================================================
             Map goes here
     =======================================================================  -->
-
-            <div class="col-sm-6 ">
-                <section id="map">
-
-                </section>
-                <div id="directions-panel"></div>
-            </div>
+    <div class="row well">
+        <div class="col-lg-6">
+            <section id="map"></section>
         </div>
-
-        <!--====================================================================
+        <div class='col-lg-6' id="directions-panel">
+            <button id="submit" type="button" class='btn btn-success btn-lg btn-block active center'>
+            <i class='fa fa-map'></i>
+            Routes Your Adventure
+            </button>
+        </div>
+    </div>
+    <!--====================================================================
             Footer
 ===========================================================================  -->
-        <footer>
-            <img class='footer-logo' src="img/welcome/alone-bird.png" />
-            <img class='welcome-logo' src="img/welcome/rsvp.png" />
-            <div class="social container">
-                <div class="col-lg-12">
-                    <ul class="social-network social-circle">
-                        <li><a href="//facebook.com" class="icoFacebook socialPin"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="//youtube.com" class="icoYouTube socialPin"><i class="fa fa-youtube-play"></i></a></li>
-                        <li><a href="//twitter.com" class="icoTwitter socialPin"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="//linkedin.com" class="icoLinkedin socialPin"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="//pinterest.com" class="icoPinterest socialPin"><i class="fa fa-pinterest-p"></i></a></li>
-                    </ul>
-                </div>
+    <footer>
+        <img class='footer-logo' src="img/welcome/alone-bird.png" />
+        <img class='welcome-logo' src="img/welcome/rsvp.png" />
+        <div class="social container">
+            <div class="col-lg-12">
+                <ul class="social-network social-circle">
+                    <li><a href="//facebook.com" class="icoFacebook socialPin"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="//youtube.com" class="icoYouTube socialPin"><i class="fa fa-youtube-play"></i></a></li>
+                    <li><a href="//twitter.com" class="icoTwitter socialPin"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="//linkedin.com" class="icoLinkedin socialPin"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="//pinterest.com" class="icoPinterest socialPin"><i class="fa fa-pinterest-p"></i></a></li>
+                </ul>
             </div>
-            <h6>RSVP &copy; 2016</h6>
-            <h6>A Project by LymeLite Productions Inc.</h6>
-        </footer>
-        <!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src="slick/slick.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.carousel').slick({
-                    setting - name: setting - value
-                });
-            });
-        </script> -->
+        </div>
+        <h6>RSVP &copy; 2016</h6>
+        <h6>A Project by LymeLite Productions Inc.</h6>
+    </footer>
+    <!--Weather Script Tags  -->
 
-        <!--Weather Script Tags  -->
-        <!-- <script>
-            function initMap() {
-                var uluru = {
-                    lat: 40.014986,
-                    // lat: {{business.location.coordinate.latitude}}
-                    lng: -105.270546
-                        //  lng: {{business.location.coordinate.longitute}}
-                };
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 8,
-                    center: uluru
-                });
-                var marker = new google.maps.Marker({
-                    position: uluru,
-                    map: map
-                });
-            }
-        </script> -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNRtTF2TAFII2q-HjdoAdBoHXGvUxaKH4">
-        </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNRtTF2TAFII2q-HjdoAdBoHXGvUxaKH4">
+    </script>
 </body>
 
 </html>
-l>

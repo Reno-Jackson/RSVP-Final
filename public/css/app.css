@@ -22,27 +22,26 @@ End of Style for General App Page
 
 
 /*==============================================================================
-Beginning of Style for Event Icons
+Beginning of Style for Event Buttons
 ==============================================================================*/
 
-ul.event-option {
-    list-style: none;
-    display: inline;
-    margin: auto !important;
-    padding: 0;
+a.socialIcon:hover, .socialHoverClass {
+    color: #44BCDD;
 }
 
-ul.event-option li {
-    display: inline;
-    margin: 0 5px;
+.eventButton {
+    background-color: Transparent;
+    border: none;
+    outline: none;
+}
+
+.eventButton span {
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
 .event-option a.icoRestaurants:hover {
     background-color: #0086FF;
-}
-
-.restaurantSelected {
-    background-color: #0086FF!important;
 }
 
 .event-option a.icoNightlife:hover {
@@ -73,16 +72,8 @@ ul.event-option li {
     background-color: #00FF83;
 }
 
-.sightsSelected {
-    background-color: #00FF83!important;
-}
-
 .event-option a.icoOutdoors:hover i, .event-option a.icoRestaurants:hover i, .event-option a.icoEntertainment:hover i, .event-option a.icoNightlife:hover i, .event-option a.icoArts:hover i {
     color: #FFF;
-}
-
-a.socialIcon:hover, .socialHoverClass {
-    color: #44BCDD;
 }
 
 .event-circle li a {
@@ -130,16 +121,35 @@ a.socialIcon:hover, .socialHoverClass {
     background-color: #D3D3D3;
 }
 
-.eventButton {
-    background-color: Transparent;
-    border: none;
-    outline: none;
+.sightsSelected {
+    background-color: #00FF83!important;
 }
 
-.eventButton span {
-    font-weight: bold;
-    font-family: sans-serif;
+ul.event-option {
+    list-style: none;
+    display: inline;
+    margin: auto !important;
+    padding: 0;
 }
+
+ul.event-option li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.restaurantSelected {
+    background-color: #0086FF!important;
+}
+
+
+/*==============================================================================
+End of Style for Event Buttons
+==============================================================================*/
+
+
+/*==============================================================================
+Beginning of Style for Event Section
+==============================================================================*/
 
 .eventSection {
     background-color: #24242A;
@@ -147,18 +157,18 @@ a.socialIcon:hover, .socialHoverClass {
 }
 
 .eventSection h2 {
-    font-weight: bolder;
     color: white;
+    font-weight: bolder;
 }
 
 .eventSection h4 {
-    font-weight: bolder;
     color: white;
+    font-weight: bolder;
 }
 
 
 /*==============================================================================
-Beginning of Style for Event Icons
+End of Style for Event Section
 ==============================================================================*/
 
 
@@ -220,6 +230,11 @@ Beginning of Style for Event Area
     margin-top: 20px;
 }
 
+.results .resultsArea {
+    overflow-y: scroll;
+    height: 600px;
+}
+
 .results ul {
     border: 3px solid rgba(192, 182, 95, 0.93);
     width: 460px;
@@ -227,7 +242,6 @@ Beginning of Style for Event Area
     color: white;
     background-color: #24242A;
     float: left;
-    transition: 0.3s;
 }
 
 .results ul:hover {
@@ -246,6 +260,11 @@ Beginning of Style for Event Area
 /*==============================================================================
 End of Style for Event Area
 ==============================================================================*/
+
+.itineraryList i {
+    color: white;
+    float: none;
+}
 
 
 /*--============================================================================
