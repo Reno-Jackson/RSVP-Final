@@ -118,11 +118,6 @@
         <!--====================================================================
         End of Event Calendar Widget Options
     =========================================================================-->
-
-        <!--====================================================================
-        Weather App Section
-===========================================================================-->
-
         <section>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
@@ -142,7 +137,9 @@
                 </div>
             </div>
         </section>
-
+        <!--====================================================================
+    Weather App Section
+  ===========================================================================-->
 
         <!--====================================================================
     Weather App Section
@@ -254,7 +251,9 @@ Results go here
                         </li>
                     </div>
                     <div class='addEvent'>
-                        <button type="button" class='btn btn-success btn-lg btn-block active' ng-click='yelp.addEvent(business.name, business.location.display_address, business.image_url)'>ADD</button>
+                        <button type="button" class='btn btn-success btn-lg btn-block active' ng-click='yelp.addEvent(business.name, business.location.display_address, business.image_url, business.location.coordinate.latitude, business.location.coordinate.longitude)'>
+                            ADD
+                        </button>
                     </div>
                 </ul>
             </div>
@@ -266,16 +265,19 @@ Results go here
         <div class="row">
             <div class="col-sm-6">
                 <section class='form well'>
-                    <!-- style='width: 50%; height:400px; float:left' -->
                     <ul ng-repeat='event in yelp.events'>
                         <li class='form-control' style='list-style:none ; height:50px ; line-height: 2.428571'>
                             <i class='fa fa-map-marker'></i> {{event.name.substring(0,20)}} - {{event.address}}
                             <button type="button" style="float:right; height:100% ; line-height:50% ; position:relative" class='btn btn-danger btn-sm active' ng-click='yelp.removeEvent(event.name)'>Remove</button>
                         </li>
                     </ul>
+                    <button id="submit" type="button" class='btn btn-success btn-lg btn-block active center'>
+                            <i class='fa fa-map'></i>
+                            Show Routes
+                    </button>
                     <button type="button" class='btn btn-success btn-lg btn-block active center' class="mapsToPhone" ng-click='yelp.SaveData()'>
                             <i class='fa fa-map'></i>
-                            Send Maps to Phone
+                            Send Message to Friends
                     </button>
                 </section>
             </div>
@@ -288,6 +290,7 @@ Results go here
                 <section id="map">
 
                 </section>
+                <div id="directions-panel"></div>
             </div>
         </div>
 
@@ -322,11 +325,13 @@ Results go here
         </script> -->
 
         <!--Weather Script Tags  -->
-        <script>
+        <!-- <script>
             function initMap() {
                 var uluru = {
                     lat: 40.014986,
+                    // lat: {{business.location.coordinate.latitude}}
                     lng: -105.270546
+                        //  lng: {{business.location.coordinate.longitute}}
                 };
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 8,
@@ -337,9 +342,10 @@ Results go here
                     map: map
                 });
             }
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNRtTF2TAFII2q-HjdoAdBoHXGvUxaKH4&callback=initMap">
+        </script> -->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNRtTF2TAFII2q-HjdoAdBoHXGvUxaKH4">
         </script>
 </body>
 
 </html>
+l>

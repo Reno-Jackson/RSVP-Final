@@ -28,7 +28,7 @@ mongoose.connect('mongodb://localhost/rsvp', (err) => {
     }
 })
 
-var PORT = process.env.PORT || 3030;
+var PORT = process.env.PORT || 80;
 
 var app = express();
 
@@ -48,7 +48,7 @@ app.use(bodyParser.json(), bodyParser.urlencoded({
 // Routes//
 Routes(app);
 
-app.listen(3030, (error) => {
+app.listen(80, (error) => {
     if (error) {
         console.log('Error: ', error);
         process.exit(1);

@@ -33,7 +33,7 @@
     <link rel="shortcut icon" href="/img/favicon/favicon-bird-32x32.png">
 </head>
 
-<body ng-controller="YelpCtrl as yelp" ng-init='yelp.getProfile(); yelp.getPastEvents()'>
+<body ng-controller="YelpCtrl as yelp" ng-init='yelp.getItinerary()'>
     <!-- Return to Top -->
     <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
     <!--Controls for the top of the page button  -->
@@ -71,61 +71,21 @@
         Profile Header
     =========================================================================-->
         <section>
-            <br>
-            <h2>Welcome to your Profile Page <span>{{yelp.profile.name}}</span></h2>
-            <h3>Your current email address is: <span>{{yelp.profile.email}}</span></h3>
-            <h3>Your Account was created on <span>{{yelp.profile.created|date}}</span></h3>
-            <p>
-                Here is where you can find out more about your profile. Feel free to Contact us with questions below.
-            </p>
-            <h3>View Your Past Events</h3>
-            <ul ng-repeat="itinerary in yelp.pastEvents">
+            <h2>RSVP Intinerary</h2>
 
-
-
-                <li><b><a ng-href="/itinerary/{{itinerary._id}}">Itinerary for {{itinerary.date | date}}</a></b>
+            <ul>
+                <!-- style="margin:20px" -->
+                <li ng-repeat=" event in yelp.itinerary.events ">
+                    <img ng-src="{{event.img}} " align=left></img> {{event.name}}
                     <ul>
-                        <!-- style="margin:20px" -->
-                        <li ng-repeat=" event in itinerary.events ">
-                            <img ng-src="{{event.img}} " align=left></img> {{event.name}}
-                            <ul>
-                                <li ng-repeat="line in event.address ">{{line}}</li>
-                                <!-- style='display: inline-flex' -->
-                            </ul>
-                            <hr>
-                            <br>
-                        </li>
+                        <li ng-repeat="line in event.address ">{{line}}</li>
+                        <!-- style='display: inline-flex' -->
                     </ul>
+                    <hr>
+                    <br>
                 </li>
             </ul>
         </section>
-        <!-- Contact Us
-    	============================================= -->
-
-        <section id="contact">
-            <div class="container">
-                <br><br>
-                <h2>Contact Us</h2>
-                <hr class="sep">
-                <p>Get In Touch</p>
-                <div class="col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay=".2s">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="Name" placeholder="Name" maxlength="20">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="Email" placeholder="Email" maxlength="50">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Message" maxlength="200"></textarea>
-                        </div>
-                        <a href="#" class="btn-block">Send</a>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <br><br>
         <!--====================================================================
      Footer
     ======================================================================== -->

@@ -15,8 +15,16 @@ module.exports = (app) => {
             root: './public/html/'
         })
     })
+    app.get('/itinerary/:id', (req, res) => {
+        res.sendFile('itinerary.html', {
+            root: './public/html/'
+        })
+    })
+
+
     app.get('/api/me', profile.getMe)
     app.get('/api/RSVP/Itinerary', profile.getItinerary)
+    app.get('/api/RSVP/Itinerary/:id', profile.getItineraryId)
 
     app.post('/twilio', twilio.message)
     app.post('/api/RSVP/Itinerary', profile.saveItinerary)

@@ -43,9 +43,24 @@ function getItinerary(req, res) {
     })
 }
 
+function getItineraryId(req, res) {
+    yelp.findOne({
+        _id: req.params.id
+    }, (err, itinerary) => {
+        if (err) {
+            console.log('Error getting Itineraries from database', err);
+            res.send(err)
+        } else {
+            console.log('Sucess, View Itineraries from database', itinerary);
+            res.send(itinerary)
+        }
+    })
+}
+
 module.exports = {
     saveItinerary: saveItinerary,
     getItinerary: getItinerary,
-    getMe: getMe
+    getMe: getMe,
+    getItineraryId: getItineraryId
         // getName: getName
 }

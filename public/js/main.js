@@ -6,7 +6,7 @@ angular.module('RSVP', ['ngRoute', 'ui.bootstrap'])
     .controller('YelpCtrl', yelpController)
     .config(myRouter);
 
-yelpController.$inject = ['$http'];
+yelpController.$inject = ['$http', '$routeParams', '$location'];
 
 myRouter.$inject = ['$routeProvider'];
 
@@ -16,9 +16,6 @@ function myRouter($routeProvider) {
         .when('/', {
             templateUrl: '/html/templates/app.html'
         })
-        .otherwise({
-            redirectTo: '/'
-        })
         .when('/app', {
             templateUrl: '/html/index.html'
         })
@@ -27,7 +24,7 @@ function myRouter($routeProvider) {
         })
 }
 
-function yelpController($http, $routeProvider) {
+function yelpController($http, $routeProvider, $routeParams, $location) {
     var yelp = this;
     window.yelp = yelp;
 
@@ -169,12 +166,10 @@ function yelpController($http, $routeProvider) {
 
     yelp.categories = ['restaurants', 'nightlife', 'amusementparks', 'arts', 'hiking'];
 
-    // yelp.catergories.restautants = ['panasian', 'japanese', 'italian', 'seafood', 'gluten_free', 'vegetarian']
-
-
     yelp.testApi = function() {
 
         // console.log("test api firing");
+        yelp.initMap();
 
         var callbackID = angular.callbacks.$$counter.toString(36);
         var method = 'GET';
@@ -216,13 +211,14 @@ function yelpController($http, $routeProvider) {
 
     }
 
-    yelp.addEvent = function(name, address, img_url) {
-        // console.log("image", img_url)
+    yelp.addEvent = function(name, address, img_url, lat, lng) {
         var eventExists = false;
         var event = {
             name: name,
             address: address,
             img: img_url,
+            lat: lat,
+            lng: lng
         };
         for (var i = 0; i < yelp.events.length; i++) {
             if (yelp.events[i].name === name) {
@@ -250,6 +246,8 @@ function yelpController($http, $routeProvider) {
         $http.post('/api/RSVP/Itinerary', newItinerary)
             .then(function(success) {
                 console.log(success)
+                yelp.itineraryId = success.data._id;
+                localStorage.setItem('itineraryId', yelp.itineraryId);
             }, function(err) {
                 console.log(err)
             })
@@ -272,14 +270,36 @@ function yelpController($http, $routeProvider) {
                 console.log(err)
             })
     }
+    yelp.getItinerary = function() {
+
+        var id = window.location.pathname.split('/')[2];
+        console.log("Getting itinerary with id: ", id);
+
+        if (id) {
+
+            $http.get('/api/RSVP/Itinerary/' + id)
+                .then(function(success) {
+                    console.log("Response: ", success)
+                    yelp.itinerary = success.data;
+                }, function(err) {
+                    console.log(err)
+                })
+        }
+
+    }
 
     yelp.sendMessage = function() {
+        var itineraryId = localStorage.getItem("itineraryId");
+        var message = `Hey ${yelp.getName}, this is  ${yelp.getUser}. ${yelp.getMessage}.
+            \ See your RSVP here: http://rsvpnow.events/itinerary/${itineraryId}`
+
         console.log("Attempting to send message!");
+        console.log("Message: ", message);
 
         $http.post('http://textbelt.com/text', {
 
                 number: yelp.getNumber,
-                message: "To: " + yelp.getName + ", " + "From: " + yelp.getUser + ": " + yelp.getMessage
+                message: message
             })
             .then(function(success) {
                 console.log("Response: ", success)
@@ -316,6 +336,97 @@ function yelpController($http, $routeProvider) {
     //////////////////////////////////////////////////////////////////////////
     // End Scroll to Top Area for App/////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////
+    yelp.initMap = function() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var geocoder = new google.maps.Geocoder;
+
+        geocoder.geocode({
+            'address': yelp.location
+        }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                console.log("Got result: ", results);
+                yelp.locationCoords = {
+                    lat: results[0].geometry.location.lat(),
+                    lng: results[0].geometry.location.lng()
+                };
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 6,
+                    center: yelp.locationCoords
+                });
+                directionsDisplay.setMap(map);
+
+                document.getElementById('submit').addEventListener('click', function() {
+                    yelp.calculateAndDisplayRoute(directionsService, directionsDisplay);
+                });
+            }
+        })
+    }
+
+    yelp.calculateAndDisplayRoute = function(directionsService, directionsDisplay) {
+        yelp.waypoints = [];
+
+        yelp.origin = {
+            lat: yelp.events[0].lat,
+            lng: yelp.events[0].lng
+        };
+
+        if (yelp.events.length === 1) {
+            yelp.destination = {
+                lat: yelp.events[0].lat,
+                lng: yelp.events[0].lng
+            };
+            yelp.waypoints = [];
+        } else if (yelp.events.length === 2) {
+            yelp.destination = {
+                lat: yelp.events[1].lat,
+                lng: yelp.events[1].lng
+            }
+            yelp.waypoints = [];
+        } else {
+            yelp.destination = {
+                lat: yelp.events[yelp.events.length - 1].lat,
+                lng: yelp.events[yelp.events.length - 1].lng
+            }
+            for (var i = 1; i < yelp.events.length - 1; i++) {
+
+                yelp.waypoints.push({
+                    location: {
+                        lat: yelp.events[i].lat,
+                        lng: yelp.events[i].lng
+                    },
+                    stopover: true
+                });
+            }
+        }
+
+        directionsService.route({
+            origin: yelp.origin,
+            destination: yelp.destination,
+            waypoints: yelp.waypoints,
+            optimizeWaypoints: true,
+            travelMode: 'DRIVING'
+        }, function(response, status) {
+            if (status === 'OK') {
+                directionsDisplay.setDirections(response);
+                var route = response.routes[0];
+                var summaryPanel = document.getElementById('directions-panel');
+                summaryPanel.innerHTML = '';
+                // For each route, display summary information.
+                for (var i = 0; i < route.legs.length; i++) {
+                    var routeSegment = i + 1;
+                    summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+                        '</b><br>';
+                    summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+                    summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                }
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
 }
 
 function randomString(length, chars) {
