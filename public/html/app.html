@@ -102,8 +102,8 @@
                     <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="yelp.open1()">
                 <i class="fa fa-calendar"></i>
-            </button>
-          </span>
+                    </button>
+                    </span>
                 </p>
             </div>
     </section>
@@ -118,32 +118,7 @@
     <!--====================================================================
         End of Event Calendar Widget Options
     =========================================================================-->
-    <section style='1px solid firebrick'>
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <!-- <section class="body page-index clearfix">
-                        <div class="container clearfix">
-                            <p class="location"></p>
-                            <p class="temperature"></p>
-                            <div class="climate_bg"></div>
-                            <div class="info_bg">
-                                <img class="dropicon" src="images/Droplet.svg">
-                                <p class="humidity"></p>
 
-                                <img class="windicon" src="images/Wind.svg">
-                                <div class="windspeed"></div>
-                            </div>
-                    </section> -->
-            </div>
-        </div>
-    </section>
-    <!--====================================================================
-    Weather App Section
-  ===========================================================================-->
-
-    <!--====================================================================
-    Weather App Section
-  ===========================================================================-->
     <!---===================================================================
         Event Options
     ========================================================================--->
@@ -156,7 +131,7 @@
         </div>
 
         <div class="social container">
-            <div class="col-lg-10 col-lg-offset-1">
+            <div class="col-lg-10 col-lg-offset-1 col-xs-12">
                 <ul class="event-option event-circle">
                     <li>
                         <button type="button" class="eventButton" ng-click='yelp.changeCategory("restaurants"); yelp.activeButton["restaurants"]=!yelp.activeButton["restaurants"]'>
@@ -261,17 +236,20 @@ Results go here
         Results selected for Search go here
     ======================================================================== -->
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="well">
+                <h3></i> WEATHER FOR: {{yelp.currentCity}}, {{yelp.currentCountry}}</h3>
+                <h3>CONDITION IS: {{yelp.currentCondition}} <img ng-srcset='{{yelp.weatherIcon}}'></h3>
+                <h3><i class='fa fa-thermometer-half' style:></i> TEMPERATURE IS: {{yelp.temp}} &#8457</h3>
+            </div>
             <section class='form well'>
-                <ol ng-repeat='event in yelp.events'>
-                    <!-- list-style:none ; -->
+                <ul ng-repeat='event in yelp.events'>
                     <li class='form-control' style=' height:75px ; line-height: 2.428571'>
                         <i class='fa fa-building'></i> {{event.name}}
                         <button type="button" style="float:right; height:100% ; line-height:50% ; position:relative" class='btn btn-danger btn-sm active' ng-click='yelp.removeEvent(event.name)'>Remove</button>
                         <br>
                         <p><i class='fa fa-map-marker'></i> {{event.address[0]}}</p>
-                        <!-- |cut:true:30:'...' -->
                     </li>
-                </ol>
+                </ul>
                 <section class='itineraryList'>
                     <button type="button" class='btn btn-success btn-lg btn-block active center' class="mapsToPhone" ng-click='yelp.SaveData()'>
                         <i class='fa fa-envelope'></i>
@@ -320,6 +298,10 @@ Results go here
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNRtTF2TAFII2q-HjdoAdBoHXGvUxaKH4">
     </script>
+</body>
+
+</html>
+
 </body>
 
 </html>

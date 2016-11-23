@@ -169,6 +169,7 @@ function yelpController($http, $routeProvider, $routeParams, $location) {
             params: params
         }).then(function successCallback(response) {
             yelp.data = response.data;
+            yelp.getLocationTemp(yelp.location);
             console.log("Success: ", response);
         }, function errorCallback(response) {
             console.log("Error: ", response);
@@ -277,6 +278,21 @@ function yelpController($http, $routeProvider, $routeParams, $location) {
                 console.log("Response: ", success)
             }, function(err) {
                 console.log(err)
+            })
+    }
+
+    yelp.getLocationTemp = function() {
+        $http.get(`http://api.openweathermap.org/data/2.5/weather?q=${yelp.location}&units=imperial&appid=4d53313ed2eb58bd33897a7696b050bf`)
+            .then(function(res) {
+                console.log("Response: ", res.data);
+                yelp.temp = res.data.main.temp;
+                yelp.temp = yelp.temp.toFixed(0);
+                yelp.currentCity = res.data.name;
+                yelp.currentCountry = res.data.sys.country;
+                yelp.currentCondition = res.data.weather[0].description.toUpperCase();
+                yelp.weatherIcon = `http://openweathermap.org/img/w/${res.data.weather[0].icon}.png`;
+            }, function(err) {
+                console.log(err);
             })
     }
 
