@@ -296,6 +296,10 @@ function yelpController($http, $routeProvider, $routeParams, $location) {
             })
     }
 
+    // yelp.showResults = function() {
+    //
+    // }
+
 
     ////////////////////////////////////////////////////////////////////////////
     //End of Angular JS work for YelpApp////////////////////////////////////////

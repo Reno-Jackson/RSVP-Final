@@ -11,10 +11,6 @@ body li {
     list-style: none;
 }
 
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
-    background-color: #24242A;
-}
-
 
 /*==============================================================================
 End of Style for General App Page
@@ -25,55 +21,50 @@ End of Style for General App Page
 Beginning of Style for Event Buttons
 ==============================================================================*/
 
-a.socialIcon:hover, .socialHoverClass {
-    color: #44BCDD;
-}
-
-.eventButton {
+.event-button {
     background-color: Transparent;
     border: none;
     outline: none;
+    border-color: 1px solid aliceblue;
 }
 
-.eventButton span {
+.event-button span {
     font-family: sans-serif;
     font-weight: bold;
 }
 
-.event-option a.icoRestaurants:hover {
+.event-option a.ico-restaurants:hover {
     background-color: #0086FF;
 }
 
-.event-option a.icoNightlife:hover {
+.event-option a.ico-nightlife:hover {
     background-color: #B600E8;
 }
 
-.nightlifeSelected {
-    background-color: #B600E8!important;
-}
-
-.event-option a.icoEntertainment:hover {
+.event-option a.ico-entertainment:hover {
     background-color: #FF4E00;
 }
 
-.funSelected {
-    background-color: #FF4E00!important;
-}
-
-.event-option a.icoArts:hover {
+.event-option a.ico-arts:hover {
     background-color: #E8CE0C;
 }
 
-.artsSelected {
-    background-color: #E8CE0C!important;
+a.socialIcon:hover, .socialHoverClass {
+    color: #44BCDD;
 }
 
-.event-option a.icoOutdoors:hover {
+.event-option a.ico-outdoors:hover {
     background-color: #00FF83;
 }
 
-.event-option a.icoOutdoors:hover i, .event-option a.icoRestaurants:hover i, .event-option a.icoEntertainment:hover i, .event-option a.icoNightlife:hover i, .event-option a.icoArts:hover i {
+.event-option a.ico-outdoors:hover i, .event-option a.ico-restaurants:hover i, .event-option a.ico-entertainment:hover i, .event-option a.ico-nightlife:hover i, .event-option a.ico-arts:hover i {
     color: #FFF;
+}
+
+.event-circle li i {
+    margin: 0;
+    line-height: 100px;
+    text-align: center;
 }
 
 .event-circle li a {
@@ -90,10 +81,13 @@ a.socialIcon:hover, .socialHoverClass {
     list-style: none;
 }
 
-.event-circle li i {
-    margin: 0;
-    line-height: 100px;
-    text-align: center;
+.event-circle i {
+    color: #fff;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    transition: all 0.8s;
 }
 
 .event-circle li a:hover i, .triggeredHover {
@@ -108,21 +102,8 @@ a.socialIcon:hover, .socialHoverClass {
     transition: all 0.2s;
 }
 
-.event-circle i {
-    color: #fff;
-    -webkit-transition: all 0.8s;
-    -moz-transition: all 0.8s;
-    -o-transition: all 0.8s;
-    -ms-transition: all 0.8s;
-    transition: all 0.8s;
-}
-
-.eventPin {
+.event-pin {
     background-color: #D3D3D3;
-}
-
-.sightsSelected {
-    background-color: #00FF83!important;
 }
 
 ul.event-option {
@@ -137,14 +118,46 @@ ul.event-option li {
     margin: 0 5px;
 }
 
-.restaurantSelected {
+
+/*Have background color stay while on*/
+
+.arts-selected {
+    background-color: #E8CE0C!important;
+}
+
+.fun-selected {
+    background-color: #FF4E00!important;
+}
+
+.nightlife-selected {
+    background-color: #B600E8!important;
+}
+
+.restaurant-selected {
     background-color: #0086FF!important;
+}
+
+.sights-selected {
+    background-color: #00FF83!important;
 }
 
 
 /*==============================================================================
 End of Style for Event Buttons
 ==============================================================================*/
+
+.resultsArea::-webkit-scrollbar-thumb {
+    background-color: #24242A;
+    outline: 1px solid #F5F5F5;
+}
+
+.resultsArea::-webkit-scrollbar {
+    width: 2em;
+}
+
+.resultsArea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
+}
 
 
 /*==============================================================================
@@ -232,7 +245,7 @@ Beginning of Style for Event Area
 
 .results .resultsArea {
     overflow-y: scroll;
-    height: 700px;
+    height: 600px;
 }
 
 .results ul {
@@ -252,8 +265,36 @@ Beginning of Style for Event Area
     border: 1px solid aliceblue;
 }
 
+.results-container {
+    height: 600px;
+}
+
+.results-list {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.sticky-button {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding: 0 35px 10px 0;
+    border-color: 1px solid aliceblue;
+}
+
 .scheduleSection h2 {
     font-weight: bolder;
+}
+
+.search-section {
+    display: table;
+}
+
+.search-section [class*='col-'] {
+    display: table-cell;
+    float: none;
+    vertical-align: top;
 }
 
 
@@ -266,53 +307,14 @@ End of Style for Event Area
     float: none;
 }
 
+.itineraryList button {
+    margin-bottom: 20px;
+}
+
 
 /*--============================================================================
 Beginning of Style for Scroll Area
 ===========================================================================  */
-
-
-/*
-.slideShow {
-    position: relative;
-    transform: translate3d(0, 0, 0);
-}
-
-.slideShow:hover {
-    animation-play-state: paused!important;
-}
-
-.slideShow>div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    transform: translate3d(0, 0, 0);
-}
-
-.slideShow .mover-1 {
-    animation: moveSlideshow 25s linear infinite;
-    -webkit-animation-iteration-count: infinite;
-    animation-play-state: running;
-    animation: circular;
-}
-
-.slideShow .mover-2 {
-    opacity: 0;
-    transition: opacity 0.5s ease-out;
-    background-position: 0 -200px;
-    animation: moveSlideshow 15s linear infinite;
-}
-
-.slideShow:hover .mover-2 {
-    opacity: 1;
-}
-
-@keyframes moveSlideshow {
-    100% {
-        transform: translateX(-999.9999%);
-    }
-}*/
 
 
 /*==============================================================================
@@ -411,5 +413,7 @@ a.socialIcon:hover, .socialHoverClass {
     background-color: #D3D3D3;
 }
 
+
+}
 
 }

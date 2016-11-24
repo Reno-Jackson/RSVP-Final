@@ -10,7 +10,7 @@
     /* ==========================================================================
 Preloader Style
 ========================================================================== */
-    
+
     .preloader {
         position: fixed;
         top: 0;
@@ -36,7 +36,7 @@ Preloader Style
     /* ==========================================================================
 Navigation Style
 ========================================================================== */
-    
+
     .navbar-default {
         background: rgba(13, 13, 13, .6);
         margin-bottom: 0;
@@ -69,21 +69,21 @@ Navigation Style
             padding: 0 15px;
         }
     }
-    
+
     .navbar-default .navbar-nav>.active>a,
     .navbar-default .navbar-nav>.active>a:focus,
     .navbar-default .navbar-nav>.active>a:hover {
         background: transparent;
         color: $Grey-Primary;
     }
-    
+
     .top-nav-collapse {
         background: $section-dark;
         .navbar-brand {
             height: auto;
             img {
-                width: 52px;
-                height: 52px;
+                 width: 52px;
+                 height: 52px;
             }
         }
         .nav>li>a {
@@ -93,7 +93,7 @@ Navigation Style
     /* ==========================================================================
 Sliders Style
 ========================================================================== */
-    
+
     #owl-hero {
         overflow: hidden;
         .item {
@@ -168,18 +168,18 @@ Sliders Style
             }
         }
     }
-    
+
     #owl-hero:hover .owl-prev {
         left: -5px;
     }
-    
+
     #owl-hero:hover .owl-next {
         right: -5px;
     }
     /* ==========================================================================
 Welcome Style
 ========================================================================== */
-    
+
     #welcome {
         padding: $section-padding;
         text-align: center;
@@ -197,7 +197,7 @@ Welcome Style
     /* ==========================================================================
 Services Style
 ========================================================================== */
-    
+
     #services {
         background: $section-dark;
         padding: $section-padding;
@@ -237,7 +237,7 @@ Services Style
     /* ==========================================================================
 Portfolio Style
 ========================================================================== */
-    
+
     #portfolio {
         padding: $section-padding;
         text-align: center;
@@ -299,7 +299,7 @@ Portfolio Style
     /* ==========================================================================
 Work Process Style
 ========================================================================== */
-    
+
     #work-process {
         padding: $section-padding;
         text-align: center;
@@ -322,7 +322,7 @@ Work Process Style
     /* ==========================================================================
 Fun Facts Style
 ========================================================================== */
-    
+
     #fun-facts {
         background: $section-dark;
         padding: $section-padding;
@@ -357,7 +357,7 @@ Fun Facts Style
     /* ==========================================================================
 Our Team Style
 ========================================================================== */
-    
+
     #team {
         padding: $section-padding;
         text-align: center;
@@ -391,7 +391,7 @@ Our Team Style
     /* ==========================================================================
 Testimonials Style
 ========================================================================== */
-    
+
     #testimonials {
         background-image: url('../img/testimonials/Testimonials.jpg');
         @include background-size(cover);
@@ -447,7 +447,7 @@ Testimonials Style
     /* ==========================================================================
 Contact Us Style
 ========================================================================== */
-    
+
     #contact {
         padding: $section-padding;
         text-align: center;
@@ -474,7 +474,7 @@ Contact Us Style
     /* ==========================================================================
 Google Map Style
 ========================================================================== */
-    
+
     #map {
         width: 100%;
         height: 400px;
@@ -482,7 +482,7 @@ Google Map Style
     /* ==========================================================================
 Footer Map Style
 ========================================================================== */
-    
+
     footer {
         background: $section-dark;
         padding: $section-padding;
@@ -513,7 +513,7 @@ Footer Map Style
     /* ==========================================================================
 Media Queries Style
 ========================================================================== */
-    
+
     @media (max-width: 992px) {
         /*-- Navigation --*/
         .navbar-default {
@@ -524,8 +524,8 @@ Media Queries Style
                 .navbar-brand {
                     height: auto;
                     img {
-                        width: 52px;
-                        height: 52px;
+                        width: 120px!important;
+                        height: 120px!important;
                     }
                 }
             }
