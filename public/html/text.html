@@ -63,14 +63,10 @@
         <br>
         <br>
         <section id="welcome">
-            <div class="container">
-                <h2>Thanks for using <span><img class='welcome-logo' src="/img/welcome/rsvp.png"/></span></h2>
-                <hr class="sep">
-                <img class="img-responsive center-block wow fadeInUp welcome-logo" data-wow-delay=".3s" src="/img/welcome/alone-bird.png" alt="logo">
-            </div>
+            <img class="img-responsive center-block wow fadeInUp welcome-logo" data-wow-delay=".3s" src="/img/welcome/alone-bird.png" alt="logo">
         </section>
 
-        <section id="contact">
+        <section id="contact" style='padding-bottom:50px'>
             <div class="container">
                 <br><br>
                 <h2>Message Your Friends</h2>
@@ -91,7 +87,9 @@
                             <textarea ng-model='yelp.getMessage' class="form-control" rows="3" placeholder="Text Your Friends" maxlength="160"></textarea>
                         </div>
                         {{yelp.getMessage.length}}/160 characters
-                        <button type='sumbit' class="btn-block">Send</button>
+                        <button type='sumbit' class="btn-block" ng-click='yelp.messageConfirmed=!yelp.messageConfirmed'>Send</button>
+                        <br>
+                        <h3 class='text-center' style='color:green; font-weight:bold' ng-show='yelp.messageConfirmed'>MESSAGE SENT</h3>
                     </form>
 
                 </div>
