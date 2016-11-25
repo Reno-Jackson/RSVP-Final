@@ -1,0 +1,57 @@
+body li {
+    display: inline-table;
+    margin: 0 10px 10px 0;
+}
+
+body ul img {
+    margin-right: 10px;
+    border: 1px solid aliceblue;
+}
+
+body ul {
+    padding-bottom: 10px;
+}
+
+body h2 {
+    padding-top: 50px;
+    font-weight: bolder;
+}
+
+h4 {
+    font-weight: bolder;
+    font-size: 2em;
+}
+
+span {
+    font-style: italic;
+}
+
+body .itinerary-list a {
+    text-decoration: underline;
+    font-size: 400;
+    -webkit-text-stroke: 1px rgba(192, 182, 95, 0.93);
+}
+
+body .event-name {
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+body .event-address {
+    font-weight: normal;
+    color: white;
+}
+
+.container {
+    margin-bottom: 10px;
+}
+
+#id {
+    padding-bottom: 20px;
+}
+
+.well {
+    border: 3px solid rgba(192, 182, 95, 0.93);
+    background-color: #24242A;
+}

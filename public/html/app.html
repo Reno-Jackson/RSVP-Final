@@ -208,7 +208,6 @@ Results go here
                         <i class='fa fa-map-marker fa-2x'></i>
                         <li ng-repeat='line in business.location.display_address'>
                             <a href='http://maps.google.com/?q={{business.name}}' target='_blank'>
-                                <!-- ,{{business.location.display_address}} -->
                                 {{line.substring(0,35)}}
                             </a>
                         </li>

@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/itinerary.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="shortcut icon" href="/img/favicon/favicon-bird-32x32.png">
 </head>
@@ -40,58 +40,38 @@
     <a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up"></i></a>
     <!-- Header
     ============================================= -->
-    <section class="main-header">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/"><img class='nav-logo' src="/img/logo/logo-bird.png" class="img-responsive" alt="logo"></a>
-                </div>
-                <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
-                    <div class="col-md-8 col-xs-12 nav-wrap">
-                        <ul class="nav navbar-nav">
-                            <!-- <li><a href="/">Home</a></li> -->
-                            <li><a href="/app">CREATE EVENT</a></li>
-                            <li><a href="#contact" class="page-scroll">CONTACT</a></li>
-                            <li><a href="/html/profile.html">PROFILE</a></li>
-                            <li><a href="">LOGOUT</a></li>
-                        </ul>
-                    </div>
-                </div>
-        </nav>
-        <br>
-        <br>
-        <br>
-        <!--====================================================================
+    <p class="text-center">
+        <a href="/"><img style="width:20%" src="/img/welcome/alone-bird.png" /></a>
+    </p>
+    <!--====================================================================
         Profile Header
     =========================================================================-->
-        <section>
-            <h2>RSVP Intinerary</h2>
-
-            <ul>
-                <!-- style="margin:20px" -->
-                <li ng-repeat=" event in yelp.itinerary.events ">
-                    <img ng-src="{{event.img}} " align=left></img> {{event.name}}
-                    <ul>
-                        <li ng-repeat="line in event.address ">{{line}}</li>
-                        <!-- style='display: inline-flex' -->
-                    </ul>
-                    <hr>
-                    <br>
-                </li>
-            </ul>
-        </section>
-        <!--====================================================================
+    <section class='itinerary-section'>
+        <h1 class='rsvp'>RSVP ITINERARY</h1>
+        <hr class='sep'>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <ul class='well'>
+                    <li ng-repeat=" event in yelp.itinerary.events" class='event-name'>
+                        <i class='fa fa-building'></i>
+                        <img ng-src="{{event.img}} " align=left></img> {{event.name}}
+                        <ul class='event-address'>
+                            <i class='fa fa-map-marker'></i>
+                            <li ng-repeat="line in event.address">{{line.substring(0,35)}}</li>
+                        </ul>
+                        <br>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--====================================================================
      Footer
     ======================================================================== -->
-        <footer>
-            <img class='footer-logo' src="/img/welcome/alone-bird.png " />
-            <img class='welcome-logo' src="/img/welcome/rsvp.png " />
+    <footer>
+        <a href="/">
+            <a href="/"><img class='footer-logo' src="/img/welcome/alone-bird.png " /></a>
+            <a href="/"><img class='welcome-logo' src="/img/welcome/rsvp.png " /></a>
             <div class="social container ">
                 <div class="col-lg-12 ">
                     <ul class="social-network social-circle ">
@@ -105,20 +85,20 @@
             </div>
             <h6>RSVP &copy; 2016</h6>
             <h6>A Project by LymeLite Productions Inc.</h6>
-        </footer>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="/bootstrap-assets/js/bootstrap.min.js "></script>
-        <script src="/js/custom.js "></script>
-        <!-- JS PLUGINS -->
-        <script src="/plugins/owl-carousel/owl.carousel.min.js "></script>
-        <script src="/js/jquery.easing.min.js "></script>
-        <script src="/plugins/waypoints/jquery.waypoints.min.js "></script>
-        <script src="/plugins/countTo/jquery.countTo.js "></script>
-        <script src="/plugins/inview/jquery.inview.min.js "></script>
-        <script src="/plugins/Lightbox/dist/js/lightbox.min.js "></script>
-        <script src="/plugins/WOW/dist/wow.min.js "></script>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/bootstrap-assets/js/bootstrap.min.js "></script>
+    <script src="/js/custom.js "></script>
+    <!-- JS PLUGINS -->
+    <script src="/plugins/owl-carousel/owl.carousel.min.js "></script>
+    <script src="/js/jquery.easing.min.js "></script>
+    <script src="/plugins/waypoints/jquery.waypoints.min.js "></script>
+    <script src="/plugins/countTo/jquery.countTo.js "></script>
+    <script src="/plugins/inview/jquery.inview.min.js "></script>
+    <script src="/plugins/Lightbox/dist/js/lightbox.min.js "></script>
+    <script src="/plugins/WOW/dist/wow.min.js "></script>
 </body>
 
 </html>

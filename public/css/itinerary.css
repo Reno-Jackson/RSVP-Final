@@ -1,0 +1,45 @@
+h2 {
+    padding-top: 50px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.itinerary-section {
+    padding-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 100px;
+}
+
+.well {
+    background-color: #24242A;
+    border: 4px solid rgba(192, 182, 95, 0.93);
+    color: white;
+}
+
+.well img {
+    margin-right: 10px;
+    border: 1px solid aliceblue;
+}
+
+.well li {
+    list-style: none;
+    display: inline-table;
+}
+
+.event-name {
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+.event-address {
+    font-weight: normal;
+    color: white;
+}
+
+.rsvp {
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+    -webkit-text-stroke: 2px rgba(192, 182, 95, 0.93);
+}

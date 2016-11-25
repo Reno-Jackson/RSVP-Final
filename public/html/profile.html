@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="shortcut icon" href="/img/favicon/favicon-bird-32x32.png">
 </head>
@@ -55,9 +55,8 @@
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
                     <div class="col-md-8 col-xs-12 nav-wrap">
                         <ul class="nav navbar-nav">
-                            <!-- <li><a href="/">Home</a></li> -->
                             <li><a href="/app">CREATE EVENT</a></li>
-                            <li><a href="#contact" class="page-scroll">CONTACT</a></li>
+                            <li><a href="#contact">CONTACT</a></li>
                             <li><a href="/html/profile.html">PROFILE</a></li>
                             <li><a href="">LOGOUT</a></li>
                         </ul>
@@ -71,40 +70,37 @@
         Profile Header
     =========================================================================-->
         <section>
-            <br>
             <h2>Welcome to your Profile Page <span>{{yelp.profile.name}}</span></h2>
             <h3>Your current email address is: <span>{{yelp.profile.email}}</span></h3>
             <h3>Your Account was created on <span>{{yelp.profile.created|date}}</span></h3>
             <p>
                 Here is where you can find out more about your profile. Feel free to Contact us with questions below.
             </p>
-            <h3>View Your Past Events</h3>
-            <ul ng-repeat="itinerary in yelp.pastEvents">
-
-
-
-                <li><b><a ng-href="/itinerary/{{itinerary._id}}">Itinerary for {{itinerary.date | date}}</a></b>
+        </section>
+        <h2>Your Past Events</h2>
+        <section ng-repeat="itinerary in yelp.pastEvents">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 well">
                     <ul>
-                        <!-- style="margin:20px" -->
-                        <li ng-repeat=" event in itinerary.events ">
-                            <img ng-src="{{event.img}} " align=left></img> {{event.name}}
-                            <ul>
-                                <li ng-repeat="line in event.address ">{{line}}</li>
-                                <!-- style='display: inline-flex' -->
+                        <h4 class='itinerary-list'><a ng-href="/itinerary/{{itinerary._id}}">Itinerary for {{itinerary.date | date}}</a></h4>
+                        <li ng-repeat=" event in itinerary.events" class='event-name'>
+                            <i class='fa fa-building'></i>
+                            <img ng-src="{{event.img}}" align=left></img> {{event.name}}
+                            <ul class='event-address'>
+                                <i class='fa fa-map-marker'></i>
+                                <li ng-repeat="line in event.address">{{line.substring(0,35)}}</li>
                             </ul>
-                            <hr>
-                            <br>
                         </li>
                     </ul>
-                </li>
-            </ul>
+                </div>
+            </div>
         </section>
         <!-- Contact Us
     	============================================= -->
 
         <section id="contact">
+            <a name="contact"></a>
             <div class="container">
-                <br><br>
                 <h2>Contact Us</h2>
                 <hr class="sep">
                 <p>Get In Touch</p>
