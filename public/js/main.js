@@ -263,8 +263,7 @@ function yelpController($http, $routeProvider, $routeParams, $location) {
 
     yelp.sendMessage = function() {
         var itineraryId = localStorage.getItem("itineraryId");
-        var message = `Hey ${yelp.getName}, this is  ${yelp.getUser}. ${yelp.getMessage}.
-            \ See your RSVP here: http://rsvpnow.events/itinerary/${itineraryId}`
+        var message = `Hey ${yelp.getName}, this is  ${yelp.getUser}. ${yelp.getMessage}. RSVP: http://rsvpnow.events/itinerary/${itineraryId} `
 
         console.log("Attempting to send message!");
         console.log("Message: ", message);
@@ -282,28 +281,22 @@ function yelpController($http, $routeProvider, $routeParams, $location) {
     }
 
     yelp.getLocationTemp = function() {
-        $http.get(`http://api.openweathermap.org/data/2.5/weather?q=${yelp.location}&units=imperial&appid=4d53313ed2eb58bd33897a7696b050bf`)
-            .then(function(res) {
-                console.log("Response: ", res.data);
-                yelp.temp = res.data.main.temp;
-                yelp.temp = yelp.temp.toFixed(0);
-                yelp.currentCity = res.data.name;
-                yelp.currentCountry = res.data.sys.country;
-                yelp.currentCondition = res.data.weather[0].description.toUpperCase();
-                yelp.weatherIcon = `http://openweathermap.org/img/w/${res.data.weather[0].icon}.png`;
-            }, function(err) {
-                console.log(err);
-            })
-    }
-
-    // yelp.showResults = function() {
-    //
-    // }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    //End of Angular JS work for YelpApp////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
+            $http.get(`http://api.openweathermap.org/data/2.5/weather?q=${yelp.location}&units=imperial&appid=4d53313ed2eb58bd33897a7696b050bf`)
+                .then(function(res) {
+                    console.log("Response: ", res.data);
+                    yelp.temp = res.data.main.temp;
+                    yelp.temp = yelp.temp.toFixed(0);
+                    yelp.currentCity = res.data.name;
+                    yelp.currentCountry = res.data.sys.country;
+                    yelp.currentCondition = res.data.weather[0].description.toUpperCase();
+                    yelp.weatherIcon = `http://openweathermap.org/img/w/${res.data.weather[0].icon}.png`;
+                }, function(err) {
+                    console.log(err);
+                })
+        }
+        ////////////////////////////////////////////////////////////////////////////
+        //End of Angular JS work for YelpApp////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////
 
 
     //////////////////////////////////////////////////////////////////////////
